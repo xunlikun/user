@@ -1,0 +1,108 @@
+
+.user_card{
+	height: 200rpx;
+	border-radius:8rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+}
+.calculate{
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin-top: 190rpx;
+	padding-top: 80rpx;
+}
+.calculate_wrap{
+	margin-bottom:16rpx;
+	border: 1px solid #eee;
+}
+.calculate_top{
+	background: #fff;
+	border-radius:8rpx;
+}
+.calculate_middle{
+	min-height: 250rpx;
+	background: #fff;
+	border-radius:8rpx;
+}
+.calculate_top_list{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+}
+.calculate_middle_list{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	padding: 0 16rpx;
+}
+.calculate_top_list > uni-list-item{
+	background: red;
+	width: 25%;
+	height: 100rpx;
+	text-align: center;
+	margin-top: 25rpx;
+	margin-bottom: 25rpx;
+}
+.calculate_middle_list > uni-list-item{
+	background: red;
+	height: 60rpx;
+	margin-top: 25rpx;
+}
+.calculate_top_list > uni-list-item > view{
+	display: inline-block;
+	background: #fff;
+	width: 100rpx;
+	height: 100rpx;
+	border-radius: 50%;
+	line-height: 100rpx;
+}
+.calculate_middle_list > uni-list-item > view{
+	background: #fff;
+	height: 60rpx;
+	line-height: 60rpx;
+}
+.user{
+	background-color: #fff;
+	border-radius: 50%;
+	width: 150rpx;
+	height: 150rpx;
+	text-align: center;
+	line-height: 150rpx;
+	margin-left: 32rpx;
+}
+.right{
+	float: right;
+	display: inline-block;
+	width: 16px;
+	height: 30px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.left{
+	float: left;
+	display: inline-block;
+	width: 40px;
+	height: 30px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+

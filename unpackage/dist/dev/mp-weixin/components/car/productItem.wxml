@@ -1,0 +1,1 @@
+<view class="productItem"><view class="check"><checkbox-group><label><checkbox value="cb" checked="true"></checkbox></label></checkbox-group></view><view class="img"><image src="{{currentData.image}}" mode="aspectFit"></image></view><view class="info"><text>{{currentData.title}}</text></view></view>

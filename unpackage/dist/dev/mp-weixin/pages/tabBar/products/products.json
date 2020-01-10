@@ -1,4 +1,8 @@
 {
   "navigationBarTitleText": "商品",
-  "usingComponents": {}
+  "navigationStyle": "custom",
+  "titleNView": "false",
+  "usingComponents": {
+    "product-item": "/components/products/productItem"
+  }
 }

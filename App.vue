@@ -28,5 +28,24 @@
 	.column-align-items-center{
 		align-items: center;
 	}
-	
+	.status_bar {
+	      height: var(--status-bar-height);
+	      width: 100%;
+	  }
+	.bg{
+	 	background-color:#f9f9f9;
+	 	position:absolute;
+	 	top:0;
+	 	left:0;
+	 	bottom:0;
+	 	right:0;
+		overflow: scroll;
+	}
+	text{
+		font-size: 12px;
+	}
+	.bg_img{
+		background-size: 100%;
+		background-position-y: -70rpx;
+	}
 </style>

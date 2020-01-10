@@ -1,5 +1,8 @@
 <template>
-    <view>
+    <view class="bg bg_img">
+		<view class="status_bar">
+		    <!-- 这里是状态栏 -->
+		</view>
         <view>
             <view class="page-section swiper">
                 <view class="page-section-spacing">
@@ -20,14 +23,14 @@
 		<view class="uni-padding-wrap">
 			<view class="uni-flex uni-column" style="margin: 10rpx 45rpx;">
 				<view class="uni-center uni-flex">
-					<view class='uni-flex column-justify-center column-align-items-left uni-column uni-flex-item uni-h4'>
-						<text class='uni-inline-item'>当前合同：</text>
+					<view class='uni-flex column-justify-center column-align-items-left uni-column uni-flex-item'>
+						<text class='uni-inline-item uni-h4'>当前合同：</text>
 					</view>
-					<view class="uni-flex-item uni-h3">
-						<text>C090927-A4</text>
+					<view class="uni-flex-item">
+						<text class='uni-h3'>C090927-A4</text>
 					</view>
 				</view>
-				<view class="uni-center uni-h3"><navigator url="/pages/index/index"><text>深圳工业园改造工程-A</text></navigator></view>
+				<view class="uni-center"><navigator url="/pages/project/project"><text class='uni-h3'>深圳工业园改造工程-A</text></navigator></view>
 			</view>
 		</view>
 		
@@ -61,5 +64,7 @@
 }
 </script>
 <style>
-	
+	.bg_img{
+		/* background-image:url('/static/images/global/bg.gif') */
+	}
 </style>

@@ -1,1 +1,1 @@
-<view class="_div"></view>
+<view class="bg bg_img"><view class="status_bar"></view><view class="advertising_wrap"></view><view class="products"><block wx:for="{{25}}" wx:for-item="item" wx:for-index="i" wx:key="i"><product-item class="product" vue-id="{{'1-'+i}}" datas="{{item}}" bind:__l="__l"></product-item></block></view></view>

@@ -1,0 +1,26 @@
+
+.advertising_wrap{
+	height: 300rpx;
+	background: red;
+}
+.products{	
+	display: -webkit-box;	
+	display: -webkit-flex;	
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	width: 100%;
+}
+.product{
+	min-width: 50%;
+	max-width: 50%;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	        flex: 1;
+	box-sizing: border-box;
+	/* min-height: 400rpx; */
+	backaground:red;
+/* 	border: 1rpx solid #000; */
+	padding: 30rpx;
+}
+

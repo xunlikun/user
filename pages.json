@@ -3,29 +3,61 @@
 		{
 			"path": "pages/tabBar/index/index",
 			"style": {
-				"navigationBarTitleText": "首页"
+				"navigationBarTitleText": "首页",
+				"navigationStyle":"custom",
+				"titleNView":"false"
 			}
 		},
 		{
 			"path": "pages/tabBar/products/products",
 			"style": {
-				"navigationBarTitleText": "商品"
+				"navigationBarTitleText": "商品",
+				"navigationStyle":"custom",
+				"titleNView":"false"
 			}
 		},
 		{
 			"path": "pages/tabBar/car/car",
 			"style": {
-				"navigationBarTitleText": "购物车"
+				"navigationBarTitleText": "购物车",
+				"navigationStyle":"custom",
+				"titleNView":"false"
 			}
 		},
 		{
 			"path": "pages/tabBar/my/my",
 			"style": {
-				"navigationBarTitleText": "我的"
+				"navigationBarTitleText": "我的",
+				"navigationStyle":"custom",
+				"titleNView":"false"
 			}
 		},
 		{
-			"path": "pages/index/index",
+			"path": "pages/gr/gr",
+			"style": {
+				"navigationBarTitleText": "机械"
+			}
+		},
+		{
+			"path": "pages/person/person",
+			"style": {
+				"navigationBarTitleText": "机手"
+			}
+		},
+		{
+			"path": "pages/contract/contract",
+			"style": {
+				"navigationBarTitleText": "合同"
+			}
+		},
+		{
+			"path": "pages/help/help",
+			"style": {
+				"navigationBarTitleText": "帮助中心"
+			}
+		},
+		{
+			"path": "pages/project/project",
 			"style": {
 				"navigationBarTitleText": "工程"
 			}
@@ -66,8 +98,7 @@
 		},
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarBackgroundColor": "#f9f9f9",
+		"backgroundColor": "#f9f9f9"
 	}
 }
