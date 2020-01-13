@@ -20,9 +20,12 @@
 							</view>
 						</uni-list-item>
 						<uni-list-item title="" note="">
-							<view class="">
-								<text>订单</text>
-							</view>
+							<navigator url="/pages/orders/orders">
+								<view class="">
+									<text>订单</text>
+								</view>
+							</navigator>
+							
 						</uni-list-item>
 						<uni-list-item title="" note="">
 							<view class="">
@@ -132,7 +135,7 @@
 		height: 60rpx;
 		margin-top: 25rpx;
 	}
-	.calculate_top_list > uni-list-item > view{
+	.calculate_top_list > uni-list-item view{
 		display: inline-block;
 		background: #fff;
 		width: 100rpx;
@@ -153,14 +156,6 @@
 		text-align: center;
 		line-height: 150rpx;
 		margin-left: 32rpx;
-	}
-	.right{
-		float: right;
-		display: inline-block;
-		width: 16px;
-		height: 30px;
-		background-position: center;
-		background-repeat: no-repeat;
 	}
 	.left{
 		float: left;

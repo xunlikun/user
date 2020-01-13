@@ -1,14 +1,17 @@
 <template>
 	<view class='productItem'>
-		<view class='img'>
-			<image :src="currentData.image" mode="aspectFit"></image>
-		</view>
-		<view class="title">
-			<text>{{currentData.title}}</text>
-		</view>
-		<view class="price">
-			<text>{{currentData.symbol}} {{currentData.price}}</text>
-		</view>
+		<navigator url="/pages/productDetail/productDetail?id=1">
+			<view class='img'>
+				<image :src="currentData.image" mode="aspectFit"></image>
+			</view>
+			<view class="title">
+				<text>{{currentData.title}}</text>
+			</view>
+			<view class="price">
+				<text>{{currentData.symbol}} {{currentData.price}}</text>
+			</view>
+		</navigator>
+		
 	</view>
 </template>
 
@@ -48,5 +51,11 @@
 		display: block;
 		width: 100%;
 		height: 315.2rpx;
+	}
+	view{
+		line-height: normal;
+	}
+	.title, .price{
+		padding: 4rpx 16rpx;
 	}
 </style>

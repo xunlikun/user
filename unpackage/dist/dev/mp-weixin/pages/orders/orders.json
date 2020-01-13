@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "订单",
+  "usingComponents": {
+    "liuyuno-tabs": "/components/liuyuno-tabs/liuyuno-tabs",
+    "order-list": "/components/OrderList/OrderList"
+  }
+}

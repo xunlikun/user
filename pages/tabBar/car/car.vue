@@ -11,7 +11,21 @@
 			</template>
 		</view>
 		<view class="checkout-wrap">
-			checkout
+			<view class="check-all">
+				<checkbox-group>
+				    <label>
+				       <checkbox value="cb" checked="true" />
+					   <text>全选</text>
+				    </label>
+				</checkbox-group>
+			</view>
+			<view class="much">
+				<text style="font-size: 14px;font-weight: 600;margin-right:16rpx;">合计: </text>
+				<text style="font-size: 14px;color:red"> 255.00</text>
+			</view>
+			<view class="go-check">
+				<text style="font-size: 14px;font-weight: 600;">去结算</text>
+			</view>
 		</view>
 	</view>
 </template>
@@ -32,12 +46,37 @@
 </script>
 
 <style>
+	.products-wrap{
+		padding-bottom:120rpx;
+	}
 	.checkout-wrap{
-		height: 40px;
+		height: 100rpx;
 		width:100%;
-		background: red;
+		background: #fff;
 		position: fixed;
 		bottom: 0;
 		left: 0;
+		display: flex;
+		flex: 1;
+		justify-content: center;
+		align-items: center;
+		z-index: 10;
+	}
+	.checkout-wrap > view{
+		line-height: 100rpx;
+		text-align: center;
+	}
+	.checkout-wrap .check-all{
+		flex-grow: 1;
+		
+	}
+	.checkout-wrap .much{
+		flex-grow: 1;
+
+	}
+	.checkout-wrap .go-check{
+		flex-grow: 2;
+		background: red;
+		color: #fff;
 	}
 </style>

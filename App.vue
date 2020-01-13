@@ -48,4 +48,12 @@
 		background-size: 100%;
 		background-position-y: -70rpx;
 	}
+	.right{
+		float: right;
+		display: inline-block;
+		width: 16px;
+		height: 30px;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
 </style>

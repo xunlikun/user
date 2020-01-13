@@ -1,0 +1,1 @@
+<view class="orders" bind:__l="__l"><liuyuno-tabs tabData="{{tabs}}" defaultIndex="{{defaultIndex}}" data-event-opts="{{[['^tabClick',[['tabClick']]]]}}" bind:tabClick="__e"></liuyuno-tabs><order-list datas="{{datas}}" type="{{defaultIndex}}"></order-list></view>

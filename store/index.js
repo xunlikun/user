@@ -6,11 +6,15 @@ const store = new Vuex.Store({
 	state: {
 		hasLogin: false,
 		loginProvider: "",
-		openid: null
+		openid: null,
+		maskStatus:false
 	},
 	getters:{
 		getHasLogin(state){
 			return state.hasLogin
+		},
+		getMaskStatus(state){
+			return state.maskStatus
 		}
 	},
 	mutations: {
@@ -24,6 +28,9 @@ const store = new Vuex.Store({
 		},
 		setOpenid(state, openid) {
 			state.openid = openid
+		},
+		setMaskStatus(state,boole){
+			state.maskStatus = boole
 		}
 	},
 	actions: {

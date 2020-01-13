@@ -4,13 +4,16 @@
 	border-radius:8rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
 	        flex-direction: column;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
 	        justify-content: center;
 }
 .calculate{
@@ -38,19 +41,24 @@
 .calculate_top_list{
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-flex-wrap: wrap;
+	    -ms-flex-wrap: wrap;
 	        flex-wrap: wrap;
 }
 .calculate_middle_list{
 	display: -webkit-box;
 	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	-webkit-flex-wrap: wrap;
+	    -ms-flex-wrap: wrap;
 	        flex-wrap: wrap;
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
 	        flex-direction: column;
 	padding: 0 16rpx;
 }
@@ -67,7 +75,7 @@
 	height: 60rpx;
 	margin-top: 25rpx;
 }
-.calculate_top_list > uni-list-item > view{
+.calculate_top_list > uni-list-item view{
 	display: inline-block;
 	background: #fff;
 	width: 100rpx;
@@ -88,14 +96,6 @@
 	text-align: center;
 	line-height: 150rpx;
 	margin-left: 32rpx;
-}
-.right{
-	float: right;
-	display: inline-block;
-	width: 16px;
-	height: 30px;
-	background-position: center;
-	background-repeat: no-repeat;
 }
 .left{
 	float: left;
