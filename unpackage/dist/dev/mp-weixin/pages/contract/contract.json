@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "合同",
-  "usingComponents": {}
+  "usingComponents": {
+    "contract-item": "/components/contract/contract"
+  }
 }

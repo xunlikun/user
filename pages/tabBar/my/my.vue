@@ -5,7 +5,7 @@
 		</view>
 		<view class="" style="position: relative;z-index: 1;">
 			<view class="user_card">
-				<view class="user">
+				<view class="user" @click="gotoLogin">
 					<text class='uni-h5'>点击登录</text>
 				</view>
 			</view>
@@ -16,25 +16,33 @@
 					<uni-list class="calculate_top_list">
 						<uni-list-item title="" note="">
 							<view class="">
-								<text>钱包</text>
+								<text class='icon-name'>钱包</text>
+								<i style="background-image:url('/static/images/my/wallet.png')" class='top-icon'></i>
 							</view>
 						</uni-list-item>
 						<uni-list-item title="" note="">
 							<navigator url="/pages/orders/orders">
 								<view class="">
-									<text>订单</text>
+									<text class='icon-name'>订单</text>
+									<i style="background-image:url('/static/images/my/order.png')" class='top-icon'></i>
 								</view>
 							</navigator>
 							
 						</uni-list-item>
 						<uni-list-item title="" note="">
 							<view class="">
-								<text>优惠券</text>
+								<view class="">
+									<text class='icon-name'>优惠券</text>
+									<i style="background-image:url('/static/images/my/coupon.png')" class='top-icon'></i>
+								</view>
 							</view>
 						</uni-list-item>
 						<uni-list-item title="" note="">
 							<view class="">
-								<text>发票</text>
+								<view class="">
+									<text class='icon-name'>发票</text>
+									<i style="background-image:url('/static/images/my/invoice.png')" class='top-icon'></i>
+								</view>
 							</view>
 						</uni-list-item>
 					</uni-list>
@@ -77,7 +85,11 @@
         }
     },
     methods: {
-        
+        gotoLogin(){
+			uni.navigateTo({
+			    url: '/pages/ucenter/login'
+			});
+		}
     }
 }
 </script>
@@ -123,25 +135,22 @@
 		padding: 0 16rpx;
 	}
 	.calculate_top_list > uni-list-item{
-		background: red;
 		width: 25%;
 		height: 100rpx;
 		text-align: center;
 		margin-top: 25rpx;
 		margin-bottom: 25rpx;
+		position: relative;
 	}
 	.calculate_middle_list > uni-list-item{
-		background: red;
 		height: 60rpx;
 		margin-top: 25rpx;
 	}
 	.calculate_top_list > uni-list-item view{
 		display: inline-block;
-		background: #fff;
 		width: 100rpx;
 		height: 100rpx;
 		border-radius: 50%;
-		line-height: 100rpx;
 	}
 	.calculate_middle_list > uni-list-item > view{
 		background: #fff;
@@ -160,8 +169,16 @@
 	.left{
 		float: left;
 		display: inline-block;
-		width: 40px;
-		height: 30px;
+		width: 25px;
+		height: 25px;
+		background-size: 16px;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+	.top-icon{
+		display: inline-block;
+		background-size: 30px;
+		height: 70rpx !important;
 		background-position: center;
 		background-repeat: no-repeat;
 	}

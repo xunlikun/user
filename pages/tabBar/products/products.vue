@@ -1,5 +1,5 @@
 <template>
-    <view class="bg bg_img">
+    <view class="bg">
 		<view class="status_bar">
 		    <!-- 这里是状态栏 -->
 		</view>

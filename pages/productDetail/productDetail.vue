@@ -1,5 +1,5 @@
 <template>
-	<view class='productDetail'>
+	<view class='productDetail bg'>
 		<view class="page-section swiper">
 		    <view class="page-section-spacing">
 		        <swiper class="swiper" style="height: 500rpx;" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
@@ -30,7 +30,7 @@
 						<text style="font-weight: 600;">选择</text><text style="margin-left:16rpx;color: #aaa;">颜色分类</text><i style="background-image:url('/static/images/global/right.png')" class='right'></i>
 					</uni-list-item>
 					<uni-list-item title="" note="">
-						<text style="font-weight: 600;">领券</text><text style="margin-left:16rpx;color: #aaa;">(尽请期待)</text><i style="background-image:url('/static/images/global/right.png')" class='right'></i>
+						<text style="font-weight: 600;">领券</text><text style="margin-left:16rpx;color: #aaa;">(敬请期待)</text><i style="background-image:url('/static/images/global/right.png')" class='right'></i>
 					</uni-list-item>
 				</uni-list>
 			</view>

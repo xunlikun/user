@@ -1,1 +1,1 @@
-<view class="content" bind:__l="__l"><view class="text-area"><text class="title">{{title}}</text></view></view>
+<view class="bg"><view class="advertising_wrap"></view><view class="contract uni-padding-wrap"><block wx:for="{{3}}" wx:for-item="item" wx:for-index="i" wx:key="i"><contract-item vue-id="{{'4339e200-1-'+i}}" datas="{{item}}" bind:__l="__l"></contract-item></block></view></view>

@@ -1,6 +1,7 @@
 {
+  "component": true,
   "usingComponents": {
+    "evan-checkbox": "/components/evan-checkbox/evan-checkbox",
     "uni-number-box": "/node-modules/@dcloudio/uni-ui/lib/uni-number-box/uni-number-box"
-  },
-  "component": true
+  }
 }

@@ -1,6 +1,6 @@
 <template>
 	<view class='choses'>
-		<view class="calculate uni-padding-wrap" style="height: 40rpx;">
+		<view class="calculate uni-padding-wrap" style="height: 60rpx;line-height:60rpx;">
 			<text @tap="close" class='close' style="float: right; color: red;">取消</text>
 		</view>
 		<view class="product-list uni-padding-wrap">

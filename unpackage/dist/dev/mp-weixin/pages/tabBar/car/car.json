@@ -3,6 +3,7 @@
   "navigationStyle": "custom",
   "titleNView": "false",
   "usingComponents": {
+    "evan-checkbox": "/components/evan-checkbox/evan-checkbox",
     "product-item": "/components/car/productItem"
   }
 }

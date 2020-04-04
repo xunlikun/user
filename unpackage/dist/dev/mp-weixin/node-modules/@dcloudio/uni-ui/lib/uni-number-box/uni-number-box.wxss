@@ -24,58 +24,46 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-/* #ifdef APP-NVUE */
-/* #endif */
-.uni-numbox.data-v-41531678 {
-  /* #ifndef APP-NVUE */
+.uni-numbox.data-v-49907266 {
   display: -webkit-box;
   display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  /* #endif */
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -webkit-flex-direction: row;
-      -ms-flex-direction: row;
           flex-direction: row;
   height: 20px;
   line-height: 20px;
+  width: 120px;
 }
-.uni-numbox__value.data-v-41531678 {
+.uni-numbox__value.data-v-49907266 {
   background-color: #ffffff;
   width: 30px;
   height: 20px;
-  min-height: 20px;
   text-align: center;
-  font-size: 10px;
+  font-size: 12px;
   border-width: 1rpx;
   border-style: solid;
   border-color: #c8c7cc;
   border-left-width: 0;
   border-right-width: 0;
-  line-height: 20px;
+  min-height: 0;
 }
-.uni-numbox__minus.data-v-41531678 {
-  /* #ifndef APP-NVUE */
+.uni-numbox__minus.data-v-49907266 {
   display: -webkit-box;
   display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  /* #endif */
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -webkit-flex-direction: row;
-      -ms-flex-direction: row;
           flex-direction: row;
   -webkit-box-align: center;
   -webkit-align-items: center;
-      -ms-flex-align: center;
           align-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
-      -ms-flex-pack: center;
           justify-content: center;
-  width: 20px;
+  width: 28px;
   height: 20px;
   font-size: 20px;
   color: #333;
@@ -87,27 +75,21 @@
   border-bottom-left-radius: 6rpx;
   border-right-width: 0;
 }
-.uni-numbox__plus.data-v-41531678 {
-  /* #ifndef APP-NVUE */
+.uni-numbox__plus.data-v-49907266 {
   display: -webkit-box;
   display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  /* #endif */
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -webkit-flex-direction: row;
-      -ms-flex-direction: row;
           flex-direction: row;
   -webkit-box-align: center;
   -webkit-align-items: center;
-      -ms-flex-align: center;
           align-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
-      -ms-flex-pack: center;
           justify-content: center;
-  width: 20px;
+  width: 28px;
   height: 20px;
   border-width: 1rpx;
   border-style: solid;
@@ -117,11 +99,11 @@
   background-color: #f8f8f8;
   border-left-width: 0;
 }
-.uni-numbox--text.data-v-41531678 {
+.uni-numbox--text.data-v-49907266 {
   font-size: 40rpx;
   color: #333;
 }
-.uni-numbox--disabled.data-v-41531678 {
+.uni-numbox--disabled.data-v-49907266 {
   color: #c0c0c0;
 }
 

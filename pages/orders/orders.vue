@@ -1,5 +1,5 @@
 <template>
-	<view class='orders'>
+	<view class='orders bg'>
 		 <liuyuno-tabs :tabData="tabs" :defaultIndex="defaultIndex" @tabClick='tabClick' />
 		 <OrderList :datas='datas' :type='defaultIndex'></OrderList>
 	</view>

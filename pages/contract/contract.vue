@@ -1,13 +1,20 @@
 <template>
-	<view class="content">
-		<view class="text-area">
-			<text class="title">{{title}}</text>
+	<view class="bg">
+		<view class="advertising_wrap">
+			
+		</view>
+		<view class="contract uni-padding-wrap">
+			<template v-for="(item,i) in 3">
+				<ContractItem :key='i' :datas='item'></ContractItem>
+			</template>
 		</view>
 	</view>
 </template>
 
 <script>
-	export default {
+import ContractItem from "@/components/contract/contract.vue";
+export default {
+		components:{ContractItem},
 		data() {
 			return {
 				title: '合同'
@@ -47,5 +54,9 @@
 	.title {
 		font-size: 36rpx;
 		color: #8f8f94;
+	}
+	.advertising_wrap{
+		height: 300rpx;
+		background: red;
 	}
 </style>

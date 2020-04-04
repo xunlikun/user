@@ -1,1 +1,1 @@
-<block wx:if="{{getMaskStatus}}" bind:__l="__l"><view class="mask" bind:__l="__l"></view></block>
+<block wx:if="{{getMaskStatus}}"><view class="mask"></view></block>

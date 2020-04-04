@@ -1,5 +1,5 @@
 <template>
-    <view class="bg bg_img">
+    <view class="bg">
 		<view class="status_bar">
 		    <!-- 这里是状态栏 -->
 		</view>
@@ -23,21 +23,21 @@
 		<view class="uni-padding-wrap">
 			<view class="main-calculate">
 				<view class="main-calculate-top">
-					<view class="gr">
+					<view class="gr" style="background-color: #CCCCFF;">
 						<text>工程机械</text>
 					</view>
-					<view class="wallet">
+					<view class="wallet" style="background-color: #EFE0DE;">
 						<text>钱包</text>
 					</view>
 				</view>
 				<view class="main-calculate-bottom">
-					<view class="gr">
+					<view class="gr" style="background-color: #aaCCFF;">
 						<text>合同</text>
 					</view>
-					<view class="wallet">
+					<view class="wallet" style="background-color: #F7B969;">
 						<text>发票</text>
 					</view>
-					<view class="wallet">
+					<view class="wallet" style="background-color: #FCB99D;">
 						<text>客服</text>
 					</view>
 				</view>
@@ -45,6 +45,7 @@
 			<view class="gr-calculate">
 				<view class="title">
 					<text>待收</text>
+					<i class='icon-coin' style="background-image: url(../../../static/images/index/coin.png);"></i>
 				</view>
 				<uni-list class="contract-list">
 					<template v-for="(item,i) in contract">
@@ -134,13 +135,14 @@
 	}
 	.main-calculate>view>view{
 		height: 118rpx;
-		background: red;
+		background: #aaaaff;
 		margin: 8rpx;
 		overflow: hidden;
 		padding: 32rpx 0 0 32rpx;
 	}
 	.main-calculate>view>view>text{
 		font-size: 16px;
+		color: #fff;
 	}
 	.main-calculate .main-calculate-top .gr{
 		flex-grow: 3;
@@ -159,7 +161,6 @@
 	}
 	.gr-calculate .title text{
 		font-size: 18px;
-		color:red;
 		font-weight: 600;
 	}
 	.contract-item{
@@ -172,6 +173,15 @@
 	}
 	.contract-item text{
 		font-size: 16px;
-		font-weight: 600;
+	}
+	.icon-coin{
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		background-size: 20px;
+		background-position: center;
+		background-repeat: no-repeat;
+		vertical-align: sub;
+		margin-left: 10rpx;
 	}
 </style>

@@ -3,7 +3,7 @@
 		<view class="check">
 			<checkbox-group>
 			    <label>
-			       <checkbox value="cb" checked="true" />
+			       <evan-checkbox primaryColor='red' v-model="checked"></evan-checkbox>
 			    </label>
 			</checkbox-group>
 		</view>
@@ -17,8 +17,8 @@
 				<text>颜色{{currentData.color}}</text>
 			</view>
 			<view class="price_num">
-				<text style="color: red;font-size: 16px;font-weight: 600;">￥{{currentData.price}}</text>
-				<view class="num" style="padding-right: 20rpx;">
+				<text style="color: red;font-size: 16px;">￥{{currentData.price}}</text>
+				<view class="num" style="padding: 10rpx 0 0 16rpx;">
 					<uni-number-box :min="currentData.num" :max="999"></uni-number-box>
 				</view>
 			</view>
@@ -28,8 +28,9 @@
 
 <script>
 	import uniNumberBox from "@dcloudio/uni-ui/lib/uni-number-box/uni-number-box.vue"
+	import evanCheckbox from '@/components/evan-checkbox/evan-checkbox.vue'
 	export default {
-		components:{uniNumberBox},
+		components:{uniNumberBox,evanCheckbox},
 		props:['datas'],
 		data() {
 			return {
@@ -64,6 +65,7 @@
 		display: flex;
 		background: #fff;
 		margin: 16rpx 0;
+		padding: 30rpx 0;
 	}
 	.productItem > view {
 		height: 140rpx;

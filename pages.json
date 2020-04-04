@@ -79,11 +79,47 @@
 			"style": {
 				"navigationBarTitleText": "工程"
 			}
+		},
+		{
+			"path" : "pages/ucenter/login",
+			"style" : {
+				"navigationBarTitleText" : "登录",
+				"app-plus":{
+					"bounce":"none"
+				}
+			}
+		},
+		{
+			"path" : "pages/ucenter/register",
+			"style" : {
+				"navigationBarTitleText" : "注册",
+				"app-plus":{
+					"bounce":"none"
+				}
+			}
+		},
+		{
+			"path" : "pages/ucenter/forgot",
+			"style" : {
+				"navigationBarTitleText" : "忘记密码",
+				"app-plus":{
+					"bounce":"none"
+				}
+			}
+		},
+		{
+			"path" : "pages/ucenter/reset",
+			"style" : {
+				"navigationBarTitleText" : "重置密码",
+				"app-plus":{
+					"bounce":"none"
+				}
+			}
 		}
 	],
 	"tabBar": {
 			"color":"black",
-			"selectedColor":"#4a4a4a",
+			"selectedColor":"#d81e06",
 			"backgroundColor":"#FeFeFe",
 			"position":"bottom",
 			"borderStyle":"white",
@@ -91,24 +127,24 @@
 				{
 					"pagePath":"pages/tabBar/index/index",
 					"iconPath": "static/images/tabIcon/home.png",
-					"selectedIconPath": "static/images/tabIcon/home.png",
+					"selectedIconPath": "static/images/tabIcon/home_ac.png",
 					"text": "首页 "
 					
 				}
 				,{
 					"pagePath": "pages/tabBar/products/products",
 					"iconPath": "static/images/tabIcon/products.png",
-					"selectedIconPath": "static/images/tabIcon/products.png",
+					"selectedIconPath": "static/images/tabIcon/products_ac.png",
 					"text": "商品"
 				},{
 					"pagePath": "pages/tabBar/car/car",
 					"iconPath": "static/images/tabIcon/car.png",
-					"selectedIconPath": "static/images/tabIcon/car.png",
+					"selectedIconPath": "static/images/tabIcon/car_ac.png",
 					"text": "购物车"
 				},{
 					"pagePath":"pages/tabBar/my/my",
 					"iconPath": "static/images/tabIcon/my.png",
-					"selectedIconPath": "static/images/tabIcon/my.png",
+					"selectedIconPath": "static/images/tabIcon/my_ac.png",
 					"text": "我的"
 					
 				}

@@ -4,16 +4,13 @@
 	border-radius:8rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: column;
-	    -ms-flex-direction: column;
 	        flex-direction: column;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
-	    -ms-flex-pack: center;
 	        justify-content: center;
 }
 .calculate{
@@ -41,47 +38,39 @@
 .calculate_top_list{
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-flex-wrap: wrap;
-	    -ms-flex-wrap: wrap;
 	        flex-wrap: wrap;
 }
 .calculate_middle_list{
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-flex-wrap: wrap;
-	    -ms-flex-wrap: wrap;
 	        flex-wrap: wrap;
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: column;
-	    -ms-flex-direction: column;
 	        flex-direction: column;
 	padding: 0 16rpx;
 }
 .calculate_top_list > uni-list-item{
-	background: red;
 	width: 25%;
 	height: 100rpx;
 	text-align: center;
 	margin-top: 25rpx;
 	margin-bottom: 25rpx;
+	position: relative;
 }
 .calculate_middle_list > uni-list-item{
-	background: red;
 	height: 60rpx;
 	margin-top: 25rpx;
 }
 .calculate_top_list > uni-list-item view{
 	display: inline-block;
-	background: #fff;
 	width: 100rpx;
 	height: 100rpx;
 	border-radius: 50%;
-	line-height: 100rpx;
 }
 .calculate_middle_list > uni-list-item > view{
 	background: #fff;
@@ -100,8 +89,16 @@
 .left{
 	float: left;
 	display: inline-block;
-	width: 40px;
-	height: 30px;
+	width: 25px;
+	height: 25px;
+	background-size: 16px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.top-icon{
+	display: inline-block;
+	background-size: 30px;
+	height: 70rpx !important;
 	background-position: center;
 	background-repeat: no-repeat;
 }

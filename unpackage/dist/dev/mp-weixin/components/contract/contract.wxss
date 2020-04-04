@@ -1,0 +1,9 @@
+
+.contract{
+	border: 1px solid #eee;
+	border-radius: 8rpx;
+	margin: 30rpx 0;
+	padding: 10rpx 16rpx;
+	background-color: #fff;
+}
+

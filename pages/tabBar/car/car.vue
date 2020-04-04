@@ -1,5 +1,5 @@
 <template>
-	<view class="bg bg_img">
+	<view class="bg">
 		<view class="status_bar">
 		    <!-- 这里是状态栏 -->
 		</view>
@@ -14,13 +14,12 @@
 			<view class="check-all">
 				<checkbox-group>
 				    <label>
-				       <checkbox value="cb" checked="true" />
-					   <text>全选</text>
+				       <evan-checkbox primaryColor='red' v-model="checked">全选</evan-checkbox>
 				    </label>
 				</checkbox-group>
 			</view>
 			<view class="much">
-				<text style="font-size: 14px;font-weight: 600;margin-right:16rpx;">合计: </text>
+				<text style="font-size: 14px;margin-right:16rpx;">合计: </text>
 				<text style="font-size: 14px;color:red"> 255.00</text>
 			</view>
 			<view class="go-check">
@@ -32,8 +31,9 @@
 
 <script>
 	import ProductItem from '@/components/car/productItem.vue'
+	import evanCheckbox from '@/components/evan-checkbox/evan-checkbox.vue'
 	export default {
-		components:{ProductItem},
+		components:{ProductItem,evanCheckbox},
 	    data() {
 	        return {
 				
@@ -68,7 +68,7 @@
 	}
 	.checkout-wrap .check-all{
 		flex-grow: 1;
-		
+		padding-left: 66rpx;
 	}
 	.checkout-wrap .much{
 		flex-grow: 1;
