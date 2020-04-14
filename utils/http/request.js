@@ -9,7 +9,7 @@
  */
 export default class Request {
   config = {
-    baseUrl: '',
+    baseUrl: 'http://121.37.178.81:8080',
     header: {
       'content-type': 'application/json'
     },
