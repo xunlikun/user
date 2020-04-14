@@ -65,9 +65,14 @@
 								<navigator url="/pages/contract/contract"><i style="background-image:url('/static/images/my/contract.png')" class='left'></i><text>合同</text><i style="background-image:url('/static/images/global/right.png')" class='right'></i></navigator>
 							</view>
 						</uni-list-item>
-						<uni-list-item style='margin-bottom: 25rpx;' title="" note="">
+						<uni-list-item title="" note="">
 							<view class="">
 								<navigator url="/pages/help/help"><i style="background-image:url('/static/images/my/help.png')" class='left'></i><text>帮助中心</text><i style="background-image:url('/static/images/global/right.png')" class='right'></i></navigator>
+							</view>
+						</uni-list-item>
+						<uni-list-item style='margin-bottom: 25rpx;' title="" note="">
+							<view class="">
+								<navigator url="/pages/address/address"><i style="background-image:url('/static/images/my/address.png')" class='left'></i><text>收货地址</text><i style="background-image:url('/static/images/global/right.png')" class='right'></i></navigator>
 							</view>
 						</uni-list-item>
 					</uni-list>

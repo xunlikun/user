@@ -44,6 +44,25 @@
 			</view>
 			<view class="gr-calculate">
 				<view class="title">
+					<text>待签</text>
+					<i class='icon-coin' style="background-image: url(../../../static/images/index/sign.png);"></i>
+				</view>
+				<uni-list class="contract-list">
+					<template v-for="(item,i) in contract">
+					<navigator url="/pages/projectSign/projectSign?id=1">
+						<uni-list-item class="contract-item" title="" note="" :key='i'>
+							<text style="max-width: 300rpx;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">{{item.contractTitle}}合同{{item.month}}月份</text>
+							<text>状态{{item.status}}</text>
+						</uni-list-item>
+					</navigator>
+					
+					</template>
+					
+				</uni-list>
+			</view>
+			
+			<view class="gr-calculate">
+				<view class="title">
 					<text>待收</text>
 					<i class='icon-coin' style="background-image: url(../../../static/images/index/coin.png);"></i>
 				</view>

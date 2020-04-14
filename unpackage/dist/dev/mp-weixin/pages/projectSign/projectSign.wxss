@@ -1,0 +1,45 @@
+
+.advertising_wrap{
+	height: 300rpx;
+	background: red;
+}
+.funds_wrap{
+	border: 1px solid #eee;
+	position: relative;
+	min-height: 600rpx;
+	margin: 30rpx 0;
+	padding: 30rpx;
+}
+.funds_wrap .close_fonds{
+	float: right;
+	height: 60rpx;
+	line-height: 60rpx;
+}
+.funds_wrap .info{
+	margin-top: 30rpx;
+}
+.icon-close{
+	height: 60rpx;
+	width: 60rpx;
+	display: inline-block;
+	background-size: 20px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+button {
+	margin-top: 20rpx;
+	height: 66rpx;
+	width: 33%;
+	line-height: 66rpx;
+	color: #ffffff;
+	font-size: 32rpx;
+	border-radius: 44rpx;
+	outline: 0;
+	display: block;
+	margin: 0;
+	font-family: inherit;
+	background: #f35;
+	opacity: 0.8;
+	float: right;
+}
+

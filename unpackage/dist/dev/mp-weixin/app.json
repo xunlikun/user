@@ -2,10 +2,12 @@
   "pages": [
     "pages/tabBar/index/index",
     "pages/projectFunds/projectFunds",
+    "pages/projectSign/projectSign",
     "pages/tabBar/products/products",
     "pages/productDetail/productDetail",
     "pages/tabBar/car/car",
     "pages/tabBar/my/my",
+    "pages/address/address",
     "pages/orders/orders",
     "pages/gr/gr",
     "pages/person/person",
