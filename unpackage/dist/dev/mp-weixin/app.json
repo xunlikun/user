@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/ucenter/login",
     "pages/tabBar/index/index",
     "pages/projectFunds/projectFunds",
     "pages/projectSign/projectSign",
@@ -14,8 +15,8 @@
     "pages/contract/contract",
     "pages/help/help",
     "pages/project/project",
-    "pages/ucenter/login",
     "pages/ucenter/register",
+    "pages/ucenter/registerDetail",
     "pages/ucenter/forgot",
     "pages/ucenter/reset"
   ],

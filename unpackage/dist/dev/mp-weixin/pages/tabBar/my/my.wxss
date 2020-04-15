@@ -89,15 +89,15 @@
 .left{
 	float: left;
 	display: inline-block;
-	width: 25px;
-	height: 25px;
-	background-size: 16px;
+	width: 50rpx;
+	height: 50rpx;
+	background-size: 32rpx;
 	background-position: center;
 	background-repeat: no-repeat;
 }
 .top-icon{
 	display: inline-block;
-	background-size: 30px;
+	background-size: 60rpx;
 	height: 70rpx !important;
 	background-position: center;
 	background-repeat: no-repeat;

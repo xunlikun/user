@@ -215,6 +215,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -222,6 +229,26 @@ var _default =
 
 
   },
+  onShow: function onShow() {
+    this.$store.dispatch('ACgetUserInfo').then(function (res) {
+      if (res.data.status == 200) {
+
+      } else {
+
+      }
+      console.log(res);
+    }).catch(function (err) {
+      uni.clearStorageSync();
+      uni.navigateTo({
+        url: '/pages/ucenter/login' });
+
+    });
+  },
+  computed: {
+    hasLogin: function hasLogin() {
+      return this.$store.getters.getHasLogin;
+    } },
+
   methods: {
     gotoLogin: function gotoLogin() {
       uni.navigateTo({

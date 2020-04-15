@@ -5,10 +5,14 @@
 			...mapState(['hasLogin'])
 		},
 		onLaunch: function() {
-			console.log('App Launch',this.hasLogin)
+			
 		},
 		onShow: function() {
-			console.log('App Show')
+			if(this.hasLogin){
+				uni.switchTab({
+					url:'/pages/tabBar/my/my'
+				})
+			}
 		},
 		onHide: function() {
 			console.log('App Hide')

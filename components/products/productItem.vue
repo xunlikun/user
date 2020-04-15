@@ -41,7 +41,7 @@
 	.productItem{
 		overflow: hidden;
 		background: #fff;
-		border-radius: 4px;
+		border-radius: 8rpx;
 	}
 	.img{
 		width: 100%;

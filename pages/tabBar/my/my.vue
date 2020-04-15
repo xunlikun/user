@@ -5,9 +5,16 @@
 		</view>
 		<view class="" style="position: relative;z-index: 1;">
 			<view class="user_card">
-				<view class="user" @click="gotoLogin">
-					<text class='uni-h5'>点击登录</text>
-				</view>
+				<template v-if="hasLogin">
+					<view class="user">
+						<text class='uni-h5'>您已登录</text>
+					</view>
+				</template>
+				<template v-else>
+					<view class="user" @click="gotoLogin">
+						<text class='uni-h5'>点击登录</text>
+					</view>
+				</template>
 			</view>
 		</view>
 		<view class="">
@@ -89,6 +96,26 @@
             
         }
     },
+	onShow() {
+		this.$store.dispatch('ACgetUserInfo').then(res => {
+			if(res.data.status == 200){
+				
+			}else{
+				
+			}
+			console.log(res)
+		}).catch(err => {
+			uni.clearStorageSync();
+			uni.navigateTo({
+				url:'/pages/ucenter/login'
+			})
+		})
+	},
+	computed:{
+		hasLogin(){
+			return this.$store.getters.getHasLogin
+		}
+	},
     methods: {
         gotoLogin(){
 			uni.navigateTo({
@@ -174,15 +201,15 @@
 	.left{
 		float: left;
 		display: inline-block;
-		width: 25px;
-		height: 25px;
-		background-size: 16px;
+		width: 50rpx;
+		height: 50rpx;
+		background-size: 32rpx;
 		background-position: center;
 		background-repeat: no-repeat;
 	}
 	.top-icon{
 		display: inline-block;
-		background-size: 30px;
+		background-size: 60rpx;
 		height: 70rpx !important;
 		background-position: center;
 		background-repeat: no-repeat;

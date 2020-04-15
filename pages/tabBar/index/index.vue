@@ -121,6 +121,10 @@
 			]
         }
     },
+	onShow() {
+		console.log(uni.getStorageSync('userInfo'))
+		console.log(uni.getStorageSync('token'))
+	},
     methods: {
         changeIndicatorDots(e) {
             this.indicatorDots = !this.indicatorDots
@@ -195,9 +199,9 @@
 	}
 	.icon-coin{
 		display: inline-block;
-		width: 20px;
-		height: 20px;
-		background-size: 20px;
+		width: 40rpx;
+		height: 40rpx;
+		background-size: 40rpx;
 		background-position: center;
 		background-repeat: no-repeat;
 		vertical-align: sub;

@@ -8,87 +8,55 @@
 		<view class="registercontent">
 			<view class="has-mglr-10 ">
 				<view class=" has-mgtb-10 " style="padding-bottom: 26px ;">
-					<input v-model="mobile" type="number" maxlength="11" placeholder="请输入手机号" class="is-input1 " />
+					<input v-model="data.UserEntityDTO.entityName" type="number" maxlength="11" placeholder="请输入姓名" class="is-input1 " />
 				</view>
 				<view class=" has-mgtb-10 " style="padding-bottom: 26px ;">
-					<input v-model="password" type="password" maxlength="16" placeholder="请输入密码" class="is-input1 " />
-				</view>
-				<view class=" has-mgtb-10 " style="padding-bottom: 26px ;">
-					<input v-model="auth" type="number" maxlength="6" placeholder="短信验证码" class="is-input1 " />
-					<view class="codeimg" @tap="getsmscode">{{smsbtn.text}}</view>
+					<input v-model="data.idNumber" type="number" placeholder="请输入身份证号" class="is-input1 " />
 				</view>
 				<view class=" registerbtn has-radius has-mgtb-20" style="padding-bottom: 26px ;">
-					<button @tap="defaultHandlerNext">下一步</button>
+					<button @tap="defaultHandlerRegister">注册</button>
 				</view>
 			</view>
 		</view>
-		<uni-popup ref="popup" type="center">
-				<text style="background-color: #fff;padding: 40rpx 100rpx;border-radius: 8rpx;">验证码出错</text>
-		</uni-popup>
+		<view class="is-20vh has-mgt-80" style="margin-left:30px ;">
+			<navigator url="#" class=" has-radius is-center is-grey " hover-class="">
+				<text>注册即表示同意</text><text class="is-blue">《用户协议》</text>
+			</navigator>
+		</view>
 	</view>
 </template>
 
 <script>
-	import uniPopup from "@dcloudio/uni-ui/lib/uni-popup/uni-popup.vue"
 	export default {
-		components:{uniPopup},
 		data() {
 			return {
-				smsbtn: {
-					text: '获取验证码',
-					status: false,
-					codeTime: 60
-				},
-				mobile:'',
-				password:'',
-				auth:'',
-				timerId: null,
+				data:{
+				    "idNumber":"",
+				    "mobile":"",
+					"password":"",
+				    "UserEntityDTO":{
+				        "entityName":"",
+				        "entityType":"personal"
+				    }
+				}
 			};
 		},
-		onLoad: function (option) { //option为object类型，会序列化上个页面传递的参数
-				console.log(option,1)
-		},
 		methods: {
-			defaultHandlerNext: function() {
-				this.$http.post('/app/user/checkVerificationCode', {mobile: this.mobile, verificationCode: this.auth,},{header:{"content-type":"application/x-www-form-urlencoded"}} ).then(res => {
+			defaultHandlerRegister: function() {
+				this.data.mobile = this.$store.getters.getRegisterMobil
+				this.data.password = this.$store.getters.getRegisterPassword
+				this.data.UserEntityDTO.UserEntityAttrDTO = []
+				this.$http.post('/app/user/registerByMobile', this.data ).then(res => {
 					if(res.data.status == 200){
 						uni.navigateTo({
-						    url: '/pages/ucenter/registerDetail'
+							url: '/pages/ucenter/login'
 						});
-						this.$store.commit('setRegisterMobile',this.mobile)
-						this.$store.commit('setRegisterPassword',this.password)
 					}else{
-						this.$refs.popup.open()
+						
 					}
 				}).catch(err => {
 					
 				})
-			},
-			getsmscode: function() {
-				if (this.smsbtn.status == true ) {
-					console.log('message：', "别着急！短信已经发送了~");
-					return false;
-				}
-				this.$http.post('/app/user/sendVerificationCode', {mobile: this.mobile} ,{header:{"content-type":"application/x-www-form-urlencoded"}}).then(res => {
-				
-				}).catch(err => {
-				
-				})
-				this.smsbtn.status = true; // 这段代码其实应该加在你request请求 短信发送成功后 
-				this.timerId = setInterval(() => {
-						var codeTime = this.smsbtn.codeTime;
-						codeTime--;
-						this.smsbtn.codeTime = codeTime;
-						this.smsbtn.text = codeTime + "S";
-						if (codeTime < 1) {
-							clearInterval(this.timerId);
-							this.smsbtn.text = "重新获取";
-							this.smsbtn.codeTime = 60;
-							this.smsbtn.status = false;
-						}
-					},
-					1000);
-				return false;
 			}
 
 		}
@@ -137,7 +105,7 @@
 		position: absolute;
 		font-size: 40rpx;
 		right: 12%;
-		z-index: 1;
+		z-index: 999;
 		width: 105rpx;
 		text-align: center;
 		color: #353535;
@@ -153,7 +121,7 @@
 		position: absolute;
 		font-size: 28rpx;
 		right: 12%;
-		z-index: 10;
+		z-index: 999;
 		width: 200rpx;
 		text-align: center;
 		color: #353535;

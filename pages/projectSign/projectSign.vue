@@ -70,7 +70,7 @@
 		height: 60rpx;
 		width: 60rpx;
 		display: inline-block;
-		background-size: 20px;
+		background-size: 40rpx;
 		background-position: center;
 		background-repeat: no-repeat;
 	}

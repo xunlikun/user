@@ -37,7 +37,7 @@ page {
 	position: absolute;
 	font-size: 40rpx;
 	right: 12%;
-	z-index: 999;
+	z-index: 1;
 	width: 105rpx;
 	text-align: center;
 	color: #353535;
@@ -52,7 +52,7 @@ page {
 	position: absolute;
 	font-size: 28rpx;
 	right: 12%;
-	z-index: 999;
+	z-index: 10;
 	width: 200rpx;
 	text-align: center;
 	color: #353535;

@@ -2649,12 +2649,28 @@ var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 12));function
 _vue.default.use(_vuex.default);
 var store = new _vuex.default.Store({
   state: {
-    hasLogin: false,
+    hasLogin: uni.getStorageSync('hasLogin') ? JSON.parse(uni.getStorageSync('hasLogin')) : false,
     loginProvider: "",
     openid: null,
-    maskStatus: false },
+    maskStatus: false,
+    registerMobil: "",
+    registerPassword: "",
+    token: uni.getStorageSync('token') ? uni.getStorageSync('token') : "",
+    userInfo: uni.getStorageSync('userInfo') ? uni.getStorageSync('userInfo') : "" },
 
   getters: {
+    getRegisterPassword: function getRegisterPassword(state) {
+      return state.registerPassword;
+    },
+    getRegisterMobil: function getRegisterMobil(state) {
+      return state.registerMobil;
+    },
+    getToken: function getToken(state) {
+      return state.token;
+    },
+    getUserInfo: function getUserInfo(state) {
+      return state.userInfo;
+    },
     getHasLogin: function getHasLogin(state) {
       return state.hasLogin;
     },
@@ -2663,6 +2679,24 @@ var store = new _vuex.default.Store({
     } },
 
   mutations: {
+    setRegisterPassword: function setRegisterPassword(state, password) {
+      state.registerPassword = password;
+    },
+    setRegisterMobile: function setRegisterMobile(state, mobile) {
+      state.registerMobil = mobile;
+    },
+    setToken: function setToken(state, token) {
+      state.token = token;
+      uni.setStorageSync('token', token);
+    },
+    setUserInfo: function setUserInfo(state, info) {
+      state.userInfo = info;
+      uni.setStorageSync('userInfo', info);
+    },
+    setHasLogin: function setHasLogin(state, boole) {
+      state.hasLogin = boole;
+      uni.setStorageSync('hasLogin', boole);
+    },
     login: function login(state, provider) {
       state.hasLogin = true;
       state.loginProvider = provider;
@@ -2679,10 +2713,26 @@ var store = new _vuex.default.Store({
     } },
 
   actions: {
-    // lazy loading openid
-    getUserOpenId: function () {var _getUserOpenId = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(_ref) {var commit, state;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+    ACgetUserInfo: function () {var _ACgetUserInfo = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(_ref) {var commit, state;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
                 commit = _ref.commit,
-                state = _ref.state;_context.next = 3;return (
+                state = _ref.state;return _context.abrupt("return",
+
+                new Promise(function (resolve, reject) {
+                  _vue.default.prototype.$http.post('/app/user/getUserInfo', {}, { header: { "content-type": "application/x-www-form-urlencoded" } }).then(function (res) {
+                    if (res.data.status == 200) {
+                      commit('setUserInfo', res.data.data);
+                      commit('setHasLogin', true);
+                      resolve(res);
+                    }
+                  }).catch(function (err) {
+                    reject(err);
+                  });
+                }));case 2:case "end":return _context.stop();}}}, _callee);}));function ACgetUserInfo(_x) {return _ACgetUserInfo.apply(this, arguments);}return ACgetUserInfo;}(),
+
+    // lazy loading openid
+    getUserOpenId: function () {var _getUserOpenId = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2(_ref2) {var commit, state;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
+                commit = _ref2.commit,
+                state = _ref2.state;_context2.next = 3;return (
 
                   new Promise(function (resolve, reject) {
                     if (state.openid) {
@@ -2704,7 +2754,7 @@ var store = new _vuex.default.Store({
                         } });
 
                     }
-                  }));case 3:return _context.abrupt("return", _context.sent);case 4:case "end":return _context.stop();}}}, _callee);}));function getUserOpenId(_x) {return _getUserOpenId.apply(this, arguments);}return getUserOpenId;}() } });var _default =
+                  }));case 3:return _context2.abrupt("return", _context2.sent);case 4:case "end":return _context2.stop();}}}, _callee2);}));function getUserOpenId(_x2) {return _getUserOpenId.apply(this, arguments);}return getUserOpenId;}() } });var _default =
 
 
 
@@ -11028,7 +11078,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/tabBar/index/index": { "navigationBarTitleText": "首页", "navigationStyle": "custom", "titleNView": "false" }, "pages/projectFunds/projectFunds": { "navigationBarTitleText": "款项详情" }, "pages/projectSign/projectSign": { "navigationBarTitleText": "合同详情" }, "pages/tabBar/products/products": { "navigationBarTitleText": "商品", "navigationStyle": "custom", "titleNView": "false" }, "pages/productDetail/productDetail": { "navigationBarTitleText": "商品详情" }, "pages/tabBar/car/car": { "navigationBarTitleText": "购物车", "navigationStyle": "custom", "titleNView": "false" }, "pages/tabBar/my/my": { "navigationBarTitleText": "我的", "navigationStyle": "custom", "titleNView": "false" }, "pages/address/address": { "navigationBarTitleText": "收货地址" }, "pages/orders/orders": { "navigationBarTitleText": "订单" }, "pages/gr/gr": { "navigationBarTitleText": "机械" }, "pages/person/person": { "navigationBarTitleText": "机手" }, "pages/contract/contract": { "navigationBarTitleText": "合同" }, "pages/help/help": { "navigationBarTitleText": "帮助中心" }, "pages/project/project": { "navigationBarTitleText": "工程" }, "pages/ucenter/login": { "navigationBarTitleText": "登录" }, "pages/ucenter/register": { "navigationBarTitleText": "注册" }, "pages/ucenter/forgot": { "navigationBarTitleText": "忘记密码" }, "pages/ucenter/reset": { "navigationBarTitleText": "重置密码" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarBackgroundColor": "#f9f9f9", "backgroundColor": "#f9f9f9" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/tabBar/index/index": { "navigationBarTitleText": "首页", "navigationStyle": "custom", "titleNView": "false", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/projectFunds/projectFunds": { "navigationBarTitleText": "款项详情", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/projectSign/projectSign": { "navigationBarTitleText": "合同详情", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/tabBar/products/products": { "navigationBarTitleText": "商品", "navigationStyle": "custom", "titleNView": "false", "usingComponents": { "product-item": "/components/products/productItem" }, "usingAutoImportComponents": {} }, "pages/productDetail/productDetail": { "navigationBarTitleText": "商品详情", "usingComponents": { "chose": "/components/chose/chose", "masks": "/components/masks/masks" }, "usingAutoImportComponents": {} }, "pages/tabBar/car/car": { "navigationBarTitleText": "购物车", "navigationStyle": "custom", "titleNView": "false", "usingComponents": { "product-item": "/components/car/productItem", "evan-checkbox": "/components/evan-checkbox/evan-checkbox" }, "usingAutoImportComponents": { "evan-checkbox": "/components/evan-checkbox/evan-checkbox" } }, "pages/tabBar/my/my": { "navigationBarTitleText": "我的", "navigationStyle": "custom", "titleNView": "false", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/address/address": { "navigationBarTitleText": "收货地址", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/orders/orders": { "navigationBarTitleText": "订单", "usingComponents": { "liuyuno-tabs": "/components/liuyuno-tabs/liuyuno-tabs", "order-list": "/components/OrderList/OrderList" }, "usingAutoImportComponents": { "liuyuno-tabs": "/components/liuyuno-tabs/liuyuno-tabs", "order-list": "/components/OrderList/OrderList" } }, "pages/gr/gr": { "navigationBarTitleText": "机械", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/person/person": { "navigationBarTitleText": "机手", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/contract/contract": { "navigationBarTitleText": "合同", "usingComponents": { "contract-item": "/components/contract/contract" }, "usingAutoImportComponents": {} }, "pages/help/help": { "navigationBarTitleText": "帮助中心", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/project/project": { "navigationBarTitleText": "工程", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/ucenter/login": { "navigationBarTitleText": "登录", "navigationStyle": "custom", "titleNView": "false", "usingComponents": { "uni-popup": "/node-modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup" }, "usingAutoImportComponents": {} }, "pages/ucenter/register": { "navigationBarTitleText": "注册", "usingComponents": { "uni-popup": "/node-modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup" }, "usingAutoImportComponents": {} }, "pages/ucenter/forgot": { "navigationBarTitleText": "忘记密码", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/ucenter/reset": { "navigationBarTitleText": "重置密码", "usingComponents": {}, "usingAutoImportComponents": {} }, "/pages/ucenter/registerDetail": { "navigationBarTitleText": "认证" }, "pages/ucenter/registerDetail": { "navigationBarTitleText": "认证", "usingComponents": {}, "usingAutoImportComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarBackgroundColor": "#f9f9f9", "backgroundColor": "#f9f9f9" } };exports.default = _default;
 
 /***/ }),
 

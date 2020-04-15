@@ -131,42 +131,40 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uniPopup = function uniPopup() {__webpack_require__.e(/*! require.ensure | node-modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup */ "node-modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup").then((function () {return resolve(__webpack_require__(/*! @dcloudio/uni-ui/lib/uni-popup/uni-popup.vue */ 268));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
+  components: { uniPopup: uniPopup },
   data: function data() {
     return {
       smsbtn: {
@@ -174,31 +172,58 @@ var _default =
         status: false,
         codeTime: 60 },
 
+      mobile: '',
+      password: '',
+      auth: '',
       timerId: null };
 
   },
+  onLoad: function onLoad(option) {//option为object类型，会序列化上个页面传递的参数
+    console.log(option, 1);
+  },
   methods: {
-    getsmscode: function getsmscode() {var _this = this;
+    defaultHandlerNext: function defaultHandlerNext() {var _this = this;
+      this.$http.post('/app/user/checkVerificationCode', { mobile: this.mobile, verificationCode: this.auth }, { header: { "content-type": "application/x-www-form-urlencoded" } }).then(function (res) {
+        if (res.data.status == 200) {
+          uni.navigateTo({
+            url: '/pages/ucenter/registerDetail' });
+
+          _this.$store.commit('setRegisterMobile', _this.mobile);
+          _this.$store.commit('setRegisterPassword', _this.password);
+        } else {
+          _this.$refs.popup.open();
+        }
+      }).catch(function (err) {
+
+      });
+    },
+    getsmscode: function getsmscode() {var _this2 = this;
       if (this.smsbtn.status == true) {
         console.log('message：', "别着急！短信已经发送了~");
         return false;
       }
+      this.$http.post('/app/user/sendVerificationCode', { mobile: this.mobile }, { header: { "content-type": "application/x-www-form-urlencoded" } }).then(function (res) {
+
+      }).catch(function (err) {
+
+      });
       this.smsbtn.status = true; // 这段代码其实应该加在你request请求 短信发送成功后 
       this.timerId = setInterval(function () {
-        var codeTime = _this.smsbtn.codeTime;
+        var codeTime = _this2.smsbtn.codeTime;
         codeTime--;
-        _this.smsbtn.codeTime = codeTime;
-        _this.smsbtn.text = codeTime + "S";
+        _this2.smsbtn.codeTime = codeTime;
+        _this2.smsbtn.text = codeTime + "S";
         if (codeTime < 1) {
-          clearInterval(_this.timerId);
-          _this.smsbtn.text = "重新获取";
-          _this.smsbtn.codeTime = 60;
-          _this.smsbtn.status = false;
+          clearInterval(_this2.timerId);
+          _this2.smsbtn.text = "重新获取";
+          _this2.smsbtn.codeTime = 60;
+          _this2.smsbtn.status = false;
         }
       },
       1000);
       return false;
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

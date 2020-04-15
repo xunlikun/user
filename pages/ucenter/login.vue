@@ -8,14 +8,14 @@
 		<view class="content">
 			<view class="has-mglr-10 ">
 				<view class=" has-mgtb-10 " style="padding-bottom: 26px ;">
-					<input type="number" maxlength="11" v-model="login.phone" placeholder="请输入手机号" class="is-input1 " @input="BindInput" data-val="phone" />
+					<input type="number" maxlength="11" v-model="login.loginName" placeholder="请输入手机号" class="is-input1 " @input="BindInput" data-val="loginName" />
 				</view>
 				<view class=" has-radius has-mgtb-10" style="padding-bottom: 26px ;">
-					<input v-model="login.password" placeholder="请输入登录密码" class="is-input1"  @input="BindInput" data-val="password"/>
+					<input v-model="login.password" type="password" placeholder="请输入登录密码" class="is-input1"  @input="BindInput" data-val="password"/>
 				</view>
 
 				<view class=" loginbtn has-radius has-mgtb-20" style="padding-bottom: 26px ;">
-					<button :loading="login.loading" @tap="defaultHandlerLogin"> {{ login.loading ? "登录中...":"登 录"}} </button>
+					<button :loading="loading" @tap="defaultHandlerLogin"> {{ loading ? "登录中...":"登 录"}} </button>
 				</view>
 			</view>
 		</view>
@@ -27,28 +27,47 @@
 				<text>去注册</text>
 			</navigator>
 		</view>
+		<uni-popup ref="popup" type="center">
+				<text style="background-color: #fff;padding: 40rpx 100rpx;border-radius: 8rpx;">账号或密码错误</text>
+		</uni-popup>
 	</view>
 </template>
 
 <script>
+	import uniPopup from "@dcloudio/uni-ui/lib/uni-popup/uni-popup.vue"
 	export default {
+		components:{uniPopup},
 		data() {
 			return {
 				login: {
-					loading: false,
-					phone:"",
-					password:""
+					loginName:"18557531926",
+					password:"wqeqeqe"
 				},
-
+				loading: false,
 			};
 		},
 		methods:{
 			defaultHandlerLogin:function(){
-				this.login.loading = true;
-				setTimeout((e=>{
-					this.login.loading = false;
-				}),1500);
-				console.log(JSON.stringify(this.login)); 
+				let that = this
+				this.loading = true;
+				this.$http.post('/app/user/login', this.login,{header:{"content-type":"application/x-www-form-urlencoded"}} ).then(res => {
+					
+					if(res.data.status == 200){
+						this.$store.commit('setToken',res.data.data)
+						this.$store.dispatch('ACgetUserInfo').then(res => {
+							uni.switchTab({
+								url: '/pages/tabBar/index/index'
+							});
+							that.loading = false;
+						})
+					}else{
+						this.loading = false;
+						this.$refs.popup.open()
+					}
+					
+				}).catch(err => {
+					this.loading = false;
+				})
 			},
 			BindInput:function(e){
 				var dataval = e.currentTarget.dataset.val;
