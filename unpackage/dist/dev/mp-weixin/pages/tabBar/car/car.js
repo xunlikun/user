@@ -95,7 +95,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   "evan-checkbox": function() {
-    return __webpack_require__.e(/*! import() | components/evan-checkbox/evan-checkbox */ "components/evan-checkbox/evan-checkbox").then(__webpack_require__.bind(null, /*! @/components/evan-checkbox/evan-checkbox.vue */ 184))
+    return __webpack_require__.e(/*! import() | components/evan-checkbox/evan-checkbox */ "components/evan-checkbox/evan-checkbox").then(__webpack_require__.bind(null, /*! @/components/evan-checkbox/evan-checkbox.vue */ 192))
   }
 }
 var render = function() {
@@ -135,7 +135,13 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var ProductItem = function ProductItem() {__webpack_require__.e(/*! require.ensure | components/car/productItem */ "components/car/productItem").then((function () {return resolve(__webpack_require__(/*! @/components/car/productItem.vue */ 191));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var evanCheckbox = function evanCheckbox() {__webpack_require__.e(/*! require.ensure | components/evan-checkbox/evan-checkbox */ "components/evan-checkbox/evan-checkbox").then((function () {return resolve(__webpack_require__(/*! @/components/evan-checkbox/evan-checkbox.vue */ 184));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var ProductItem = function ProductItem() {__webpack_require__.e(/*! require.ensure | components/car/productItem */ "components/car/productItem").then((function () {return resolve(__webpack_require__(/*! @/components/car/productItem.vue */ 199));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var evanCheckbox = function evanCheckbox() {__webpack_require__.e(/*! require.ensure | components/evan-checkbox/evan-checkbox */ "components/evan-checkbox/evan-checkbox").then((function () {return resolve(__webpack_require__(/*! @/components/evan-checkbox/evan-checkbox.vue */ 192));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
 
 
 
@@ -176,7 +182,18 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
   },
-  methods: {} };exports.default = _default;
+  computed: {
+    hasLogin: function hasLogin() {
+      return this.$store.getters.getHasLogin;
+    } },
+
+  methods: {
+    gotoLogin: function gotoLogin() {
+      uni.navigateTo({
+        url: '/pages/ucenter/login' });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

@@ -50,7 +50,7 @@
 			defaultHandlerLogin:function(){
 				let that = this
 				this.loading = true;
-				this.$http.post('/app/user/login', this.login,{header:{"content-type":"application/x-www-form-urlencoded"}} ).then(res => {
+				this.$http.post('/app/user/login', this.login ).then(res => {
 					
 					if(res.data.status == 200){
 						this.$store.commit('setToken',res.data.data)

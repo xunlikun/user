@@ -1,13 +1,13 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
-			"path" : "pages/ucenter/login",
-			"style" : {
-				"navigationBarTitleText" : "登录",
-				"navigationStyle":"custom",
-				"titleNView":"false"
-			}
-		},
+		// {
+		// 	"path" : "pages/ucenter/login",
+		// 	"style" : {
+		// 		"navigationBarTitleText" : "登录",
+		// 		"navigationStyle":"custom",
+		// 		"titleNView":"false"
+		// 	}
+		// },
 		{
 			"path": "pages/tabBar/index/index",
 			"style": {
@@ -100,15 +100,15 @@
 				"navigationBarTitleText": "工程"
 			}
 		},
-		// {
-		// 	"path" : "pages/ucenter/login",
-		// 	"style" : {
-		// 		"navigationBarTitleText" : "登录",
-		// 		"app-plus":{
-		// 			"bounce":"none"
-		// 		}
-		// 	}
-		// },
+		{
+			"path" : "pages/ucenter/login",
+			"style" : {
+				"navigationBarTitleText" : "登录",
+				"app-plus":{
+					"bounce":"none"
+				}
+			}
+		},
 		{
 			"path" : "pages/ucenter/register",
 			"style" : {

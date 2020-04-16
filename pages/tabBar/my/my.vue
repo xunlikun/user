@@ -17,7 +17,7 @@
 				</template>
 			</view>
 		</view>
-		<view class="">
+		<view class="" v-if="hasLogin">
 			<view class="calculate uni-padding-wrap">
 				<view class="calculate_top calculate_wrap">
 					<uni-list class="calculate_top_list">
@@ -82,6 +82,11 @@
 								<navigator url="/pages/address/address"><i style="background-image:url('/static/images/my/address.png')" class='left'></i><text>收货地址</text><i style="background-image:url('/static/images/global/right.png')" class='right'></i></navigator>
 							</view>
 						</uni-list-item>
+						<uni-list-item style='margin-bottom: 25rpx;' title="" note="">
+							<view class="" @tap="loginOut">
+								<navigator><i style="background-image:url('/static/images/my/login_Out.png')" class='left'></i><text>退出登录</text></navigator>
+							</view>
+						</uni-list-item>
 					</uni-list>
 				</view>
 			</view>
@@ -97,19 +102,21 @@
         }
     },
 	onShow() {
-		this.$store.dispatch('ACgetUserInfo').then(res => {
-			if(res.data.status == 200){
-				
-			}else{
-				
-			}
-			console.log(res)
-		}).catch(err => {
-			uni.clearStorageSync();
-			uni.navigateTo({
-				url:'/pages/ucenter/login'
+		if(this.hasLogin){
+			this.$store.dispatch('ACgetUserInfo').then(res => {
+				if(res.data.status == 200){
+					
+				}else{
+					
+				}
+			}).catch(err => {
+				uni.clearStorageSync();
+				uni.navigateTo({
+					url:'/pages/ucenter/login'
+				})
 			})
-		})
+		}
+		
 	},
 	computed:{
 		hasLogin(){
@@ -118,6 +125,13 @@
 	},
     methods: {
         gotoLogin(){
+			uni.navigateTo({
+			    url: '/pages/ucenter/login'
+			});
+		},
+		loginOut(){
+			this.$store.commit('setHasLogin',false)
+			uni.clearStorage()
 			uni.navigateTo({
 			    url: '/pages/ucenter/login'
 			});

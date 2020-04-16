@@ -2644,59 +2644,76 @@ function normalizeComponent (
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 17));var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}
+var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 12));
+
+var _user = _interopRequireDefault(__webpack_require__(/*! ./modlue/user.js */ 284));
+var _product = _interopRequireDefault(__webpack_require__(/*! ./modlue/product.js */ 285));
+var _contract = _interopRequireDefault(__webpack_require__(/*! ./modlue/contract.js */ 286));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 
 _vue.default.use(_vuex.default);
 var store = new _vuex.default.Store({
-  state: {
-    hasLogin: uni.getStorageSync('hasLogin') ? JSON.parse(uni.getStorageSync('hasLogin')) : false,
+  state: _objectSpread({},
+  _user.default.state, {},
+  _product.default.state, {},
+  _contract.default.state, {
+    // hasLogin: uni.getStorageSync('hasLogin') ? JSON.parse(uni.getStorageSync('hasLogin')) : false,
     loginProvider: "",
     openid: null,
-    maskStatus: false,
-    registerMobil: "",
-    registerPassword: "",
-    token: uni.getStorageSync('token') ? uni.getStorageSync('token') : "",
-    userInfo: uni.getStorageSync('userInfo') ? uni.getStorageSync('userInfo') : "" },
-
-  getters: {
-    getRegisterPassword: function getRegisterPassword(state) {
-      return state.registerPassword;
-    },
-    getRegisterMobil: function getRegisterMobil(state) {
-      return state.registerMobil;
-    },
-    getToken: function getToken(state) {
-      return state.token;
-    },
-    getUserInfo: function getUserInfo(state) {
-      return state.userInfo;
-    },
-    getHasLogin: function getHasLogin(state) {
-      return state.hasLogin;
-    },
+    maskStatus: false
+    // registerMobil:"",
+    // registerPassword:"",
+    // token:uni.getStorageSync('token') ? uni.getStorageSync('token') : "",
+    // userInfo:uni.getStorageSync('userInfo') ? uni.getStorageSync('userInfo') : ""
+  }),
+  getters: _objectSpread({},
+  _user.default.getters, {},
+  _product.default.getters, {},
+  _contract.default.getters, {
+    // getRegisterPassword(state){
+    // 	return state.registerPassword
+    // },
+    // getRegisterMobil(state){
+    // 	return state.registerMobil
+    // },
+    // getToken(state){
+    // 	return state.token
+    // },
+    // getUserInfo(state){
+    // 	return state.userInfo
+    // },
+    // getHasLogin(state){
+    // 	return state.hasLogin
+    // },
     getMaskStatus: function getMaskStatus(state) {
       return state.maskStatus;
-    } },
+    } }),
 
-  mutations: {
-    setRegisterPassword: function setRegisterPassword(state, password) {
-      state.registerPassword = password;
-    },
-    setRegisterMobile: function setRegisterMobile(state, mobile) {
-      state.registerMobil = mobile;
-    },
-    setToken: function setToken(state, token) {
-      state.token = token;
-      uni.setStorageSync('token', token);
-    },
-    setUserInfo: function setUserInfo(state, info) {
-      state.userInfo = info;
-      uni.setStorageSync('userInfo', info);
-    },
-    setHasLogin: function setHasLogin(state, boole) {
-      state.hasLogin = boole;
-      uni.setStorageSync('hasLogin', boole);
-    },
+  mutations: _objectSpread({},
+  _user.default.mutations, {},
+  _product.default.mutations, {},
+  _contract.default.mutations, {
+    // setRegisterPassword(state,password){
+    // 	state.registerPassword = password
+    // },
+    // setRegisterMobile(state,mobile){
+    // 	state.registerMobil = mobile
+    // },
+    // setToken(state,token){
+    // 	state.token = token
+    // 	uni.setStorageSync('token', token);
+    // },
+    // setUserInfo(state,info){
+    // 	state.userInfo = info
+    // 	uni.setStorageSync('userInfo', info);
+    // },
+    // setHasLogin(state,boole){
+    // 	state.hasLogin = boole
+    // 	uni.setStorageSync('hasLogin', boole);
+    // 	if(!boole){
+    // 		state.userInfo = ''
+    // 		state.token = ''
+    // 	}
+    // },
     login: function login(state, provider) {
       state.hasLogin = true;
       state.loginProvider = provider;
@@ -2710,29 +2727,32 @@ var store = new _vuex.default.Store({
     },
     setMaskStatus: function setMaskStatus(state, boole) {
       state.maskStatus = boole;
-    } },
+    } }),
 
-  actions: {
-    ACgetUserInfo: function () {var _ACgetUserInfo = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(_ref) {var commit, state;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
-                commit = _ref.commit,
-                state = _ref.state;return _context.abrupt("return",
-
-                new Promise(function (resolve, reject) {
-                  _vue.default.prototype.$http.post('/app/user/getUserInfo', {}, { header: { "content-type": "application/x-www-form-urlencoded" } }).then(function (res) {
-                    if (res.data.status == 200) {
-                      commit('setUserInfo', res.data.data);
-                      commit('setHasLogin', true);
-                      resolve(res);
-                    }
-                  }).catch(function (err) {
-                    reject(err);
-                  });
-                }));case 2:case "end":return _context.stop();}}}, _callee);}));function ACgetUserInfo(_x) {return _ACgetUserInfo.apply(this, arguments);}return ACgetUserInfo;}(),
-
+  actions: _objectSpread({},
+  _user.default.actions, {},
+  _product.default.actions, {},
+  _contract.default.actions, {
+    // ACgetUserInfo: async function({
+    // 	commit,
+    // 	state
+    // }){
+    // 	return new Promise((resolve,reject) => {
+    // 		Vue.prototype.$http.post('/app/user/getUserInfo',{} ).then(res => {
+    // 							if(res.data.status == 200){
+    // 								commit('setUserInfo',res.data.data)
+    // 								commit('setHasLogin',true)
+    // 								resolve(res)
+    // 							}
+    // 							}).catch(err => {
+    // 								reject(err)
+    // 							})
+    // 	})
+    // },
     // lazy loading openid
-    getUserOpenId: function () {var _getUserOpenId = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2(_ref2) {var commit, state;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
-                commit = _ref2.commit,
-                state = _ref2.state;_context2.next = 3;return (
+    getUserOpenId: function () {var _getUserOpenId = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(_ref) {var commit, state;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                commit = _ref.commit,
+                state = _ref.state;_context.next = 3;return (
 
                   new Promise(function (resolve, reject) {
                     if (state.openid) {
@@ -2754,7 +2774,7 @@ var store = new _vuex.default.Store({
                         } });
 
                     }
-                  }));case 3:return _context2.abrupt("return", _context2.sent);case 4:case "end":return _context2.stop();}}}, _callee2);}));function getUserOpenId(_x2) {return _getUserOpenId.apply(this, arguments);}return getUserOpenId;}() } });var _default =
+                  }));case 3:return _context.abrupt("return", _context.sent);case 4:case "end":return _context.stop();}}}, _callee);}));function getUserOpenId(_x) {return _getUserOpenId.apply(this, arguments);}return getUserOpenId;}() }) });var _default =
 
 
 
@@ -10024,7 +10044,7 @@ Request = /*#__PURE__*/function () {function Request() {var _this = this;_classC
 
 /***/ }),
 
-/***/ 222:
+/***/ 237:
 /*!********************************************************************************************************!*\
   !*** C:/Users/陈斌/Documents/HBuilderProjects/user/node_modules/@dcloudio/uni-ui/lib/uni-icons/icons.js ***!
   \********************************************************************************************************/
@@ -10127,6 +10147,127 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   'closefill': "\uE589",
   'sound': "\uE590",
   'scan': "\uE612" };exports.default = _default;
+
+/***/ }),
+
+/***/ 284:
+/*!************************************************************************!*\
+  !*** C:/Users/陈斌/Documents/HBuilderProjects/user/store/modlue/user.js ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default = {
+  state: {
+    hasLogin: uni.getStorageSync('hasLogin') ? JSON.parse(uni.getStorageSync('hasLogin')) : false,
+    registerMobil: "",
+    registerPassword: "",
+    token: uni.getStorageSync('token') ? uni.getStorageSync('token') : "",
+    userInfo: uni.getStorageSync('userInfo') ? uni.getStorageSync('userInfo') : "" },
+
+  getters: {
+    getRegisterPassword: function getRegisterPassword(state) {
+      return state.registerPassword;
+    },
+    getRegisterMobil: function getRegisterMobil(state) {
+      return state.registerMobil;
+    },
+    getToken: function getToken(state) {
+      return state.token;
+    },
+    getUserInfo: function getUserInfo(state) {
+      return state.userInfo;
+    },
+    getHasLogin: function getHasLogin(state) {
+      return state.hasLogin;
+    } },
+
+  mutations: {
+    setRegisterPassword: function setRegisterPassword(state, password) {
+      state.registerPassword = password;
+    },
+    setRegisterMobile: function setRegisterMobile(state, mobile) {
+      state.registerMobil = mobile;
+    },
+    setToken: function setToken(state, token) {
+      state.token = token;
+      uni.setStorageSync('token', token);
+    },
+    setUserInfo: function setUserInfo(state, info) {
+      state.userInfo = info;
+      uni.setStorageSync('userInfo', info);
+    },
+    setHasLogin: function setHasLogin(state, boole) {
+      state.hasLogin = boole;
+      uni.setStorageSync('hasLogin', boole);
+      if (!boole) {
+        state.userInfo = '';
+        state.token = '';
+      }
+    } },
+
+  actions: {
+    ACgetUserInfo: function () {var _ACgetUserInfo = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(_ref) {var commit, state;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                commit = _ref.commit,
+                state = _ref.state;return _context.abrupt("return",
+
+                new Promise(function (resolve, reject) {
+                  Vue.prototype.$http.post('/app/user/getUserInfo', {}).then(function (res) {
+                    if (res.data.status == 200) {
+                      commit('setUserInfo', res.data.data);
+                      commit('setHasLogin', true);
+                      resolve(res);
+                    }
+                  }).catch(function (err) {
+                    reject(err);
+                  });
+                }));case 2:case "end":return _context.stop();}}}, _callee);}));function ACgetUserInfo(_x) {return _ACgetUserInfo.apply(this, arguments);}return ACgetUserInfo;}() } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 285:
+/*!***************************************************************************!*\
+  !*** C:/Users/陈斌/Documents/HBuilderProjects/user/store/modlue/product.js ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  state: {},
+
+
+  getters: {},
+
+
+  mutations: {},
+
+
+  actions: {} };exports.default = _default;
+
+/***/ }),
+
+/***/ 286:
+/*!****************************************************************************!*\
+  !*** C:/Users/陈斌/Documents/HBuilderProjects/user/store/modlue/contract.js ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  state: {},
+
+
+  getters: {},
+
+
+  mutations: {},
+
+
+  actions: {} };exports.default = _default;
 
 /***/ }),
 
@@ -11078,7 +11219,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/tabBar/index/index": { "navigationBarTitleText": "首页", "navigationStyle": "custom", "titleNView": "false", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/projectFunds/projectFunds": { "navigationBarTitleText": "款项详情", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/projectSign/projectSign": { "navigationBarTitleText": "合同详情", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/tabBar/products/products": { "navigationBarTitleText": "商品", "navigationStyle": "custom", "titleNView": "false", "usingComponents": { "product-item": "/components/products/productItem" }, "usingAutoImportComponents": {} }, "pages/productDetail/productDetail": { "navigationBarTitleText": "商品详情", "usingComponents": { "chose": "/components/chose/chose", "masks": "/components/masks/masks" }, "usingAutoImportComponents": {} }, "pages/tabBar/car/car": { "navigationBarTitleText": "购物车", "navigationStyle": "custom", "titleNView": "false", "usingComponents": { "product-item": "/components/car/productItem", "evan-checkbox": "/components/evan-checkbox/evan-checkbox" }, "usingAutoImportComponents": { "evan-checkbox": "/components/evan-checkbox/evan-checkbox" } }, "pages/tabBar/my/my": { "navigationBarTitleText": "我的", "navigationStyle": "custom", "titleNView": "false", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/address/address": { "navigationBarTitleText": "收货地址", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/orders/orders": { "navigationBarTitleText": "订单", "usingComponents": { "liuyuno-tabs": "/components/liuyuno-tabs/liuyuno-tabs", "order-list": "/components/OrderList/OrderList" }, "usingAutoImportComponents": { "liuyuno-tabs": "/components/liuyuno-tabs/liuyuno-tabs", "order-list": "/components/OrderList/OrderList" } }, "pages/gr/gr": { "navigationBarTitleText": "机械", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/person/person": { "navigationBarTitleText": "机手", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/contract/contract": { "navigationBarTitleText": "合同", "usingComponents": { "contract-item": "/components/contract/contract" }, "usingAutoImportComponents": {} }, "pages/help/help": { "navigationBarTitleText": "帮助中心", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/project/project": { "navigationBarTitleText": "工程", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/ucenter/login": { "navigationBarTitleText": "登录", "navigationStyle": "custom", "titleNView": "false", "usingComponents": { "uni-popup": "/node-modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup" }, "usingAutoImportComponents": {} }, "pages/ucenter/register": { "navigationBarTitleText": "注册", "usingComponents": { "uni-popup": "/node-modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup" }, "usingAutoImportComponents": {} }, "pages/ucenter/forgot": { "navigationBarTitleText": "忘记密码", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/ucenter/reset": { "navigationBarTitleText": "重置密码", "usingComponents": {}, "usingAutoImportComponents": {} }, "/pages/ucenter/registerDetail": { "navigationBarTitleText": "认证" }, "pages/ucenter/registerDetail": { "navigationBarTitleText": "认证", "usingComponents": {}, "usingAutoImportComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarBackgroundColor": "#f9f9f9", "backgroundColor": "#f9f9f9" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/tabBar/index/index": { "navigationBarTitleText": "首页", "navigationStyle": "custom", "titleNView": "false" }, "pages/projectFunds/projectFunds": { "navigationBarTitleText": "款项详情" }, "pages/projectSign/projectSign": { "navigationBarTitleText": "合同详情" }, "pages/tabBar/products/products": { "navigationBarTitleText": "商品", "navigationStyle": "custom", "titleNView": "false" }, "pages/productDetail/productDetail": { "navigationBarTitleText": "商品详情" }, "pages/tabBar/car/car": { "navigationBarTitleText": "购物车", "navigationStyle": "custom", "titleNView": "false" }, "pages/tabBar/my/my": { "navigationBarTitleText": "我的", "navigationStyle": "custom", "titleNView": "false" }, "pages/address/address": { "navigationBarTitleText": "收货地址" }, "pages/orders/orders": { "navigationBarTitleText": "订单" }, "pages/gr/gr": { "navigationBarTitleText": "机械" }, "pages/person/person": { "navigationBarTitleText": "机手" }, "pages/contract/contract": { "navigationBarTitleText": "合同" }, "pages/help/help": { "navigationBarTitleText": "帮助中心" }, "pages/project/project": { "navigationBarTitleText": "工程" }, "pages/ucenter/login": { "navigationBarTitleText": "登录" }, "pages/ucenter/register": { "navigationBarTitleText": "注册" }, "pages/ucenter/registerDetail": { "navigationBarTitleText": "认证" }, "pages/ucenter/forgot": { "navigationBarTitleText": "忘记密码" }, "pages/ucenter/reset": { "navigationBarTitleText": "重置密码" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarBackgroundColor": "#f9f9f9", "backgroundColor": "#f9f9f9" } };exports.default = _default;
 
 /***/ }),
 

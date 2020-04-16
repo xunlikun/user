@@ -50,7 +50,7 @@
 		},
 		methods: {
 			defaultHandlerNext: function() {
-				this.$http.post('/app/user/checkVerificationCode', {mobile: this.mobile, verificationCode: this.auth,},{header:{"content-type":"application/x-www-form-urlencoded"}} ).then(res => {
+				this.$http.post('/app/user/checkVerificationCode', {mobile: this.mobile, verificationCode: this.auth,} ).then(res => {
 					if(res.data.status == 200){
 						uni.navigateTo({
 						    url: '/pages/ucenter/registerDetail'
@@ -69,7 +69,7 @@
 					console.log('message：', "别着急！短信已经发送了~");
 					return false;
 				}
-				this.$http.post('/app/user/sendVerificationCode', {mobile: this.mobile} ,{header:{"content-type":"application/x-www-form-urlencoded"}}).then(res => {
+				this.$http.post('/app/user/sendVerificationCode', {mobile: this.mobile} ).then(res => {
 				
 				}).catch(err => {
 				

@@ -216,6 +216,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -256,9 +260,19 @@ var _default =
   },
   onShow: function onShow() {
     console.log(uni.getStorageSync('userInfo'));
-    console.log(uni.getStorageSync('token'));
+    console.log(uni.getStorageSync('token'), this.hasLogin);
   },
+  computed: {
+    hasLogin: function hasLogin() {
+      return this.$store.getters.getHasLogin;
+    } },
+
   methods: {
+    gotoLogin: function gotoLogin() {
+      uni.navigateTo({
+        url: '/pages/ucenter/login' });
+
+    },
     changeIndicatorDots: function changeIndicatorDots(e) {
       this.indicatorDots = !this.indicatorDots;
     },

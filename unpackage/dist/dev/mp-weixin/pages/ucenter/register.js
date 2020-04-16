@@ -131,7 +131,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uniPopup = function uniPopup() {__webpack_require__.e(/*! require.ensure | node-modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup */ "node-modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup").then((function () {return resolve(__webpack_require__(/*! @dcloudio/uni-ui/lib/uni-popup/uni-popup.vue */ 268));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uniPopup = function uniPopup() {__webpack_require__.e(/*! require.ensure | node-modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup */ "node-modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup").then((function () {return resolve(__webpack_require__(/*! @dcloudio/uni-ui/lib/uni-popup/uni-popup.vue */ 225));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -183,7 +183,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     defaultHandlerNext: function defaultHandlerNext() {var _this = this;
-      this.$http.post('/app/user/checkVerificationCode', { mobile: this.mobile, verificationCode: this.auth }, { header: { "content-type": "application/x-www-form-urlencoded" } }).then(function (res) {
+      this.$http.post('/app/user/checkVerificationCode', { mobile: this.mobile, verificationCode: this.auth }).then(function (res) {
         if (res.data.status == 200) {
           uni.navigateTo({
             url: '/pages/ucenter/registerDetail' });
@@ -202,7 +202,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log('message：', "别着急！短信已经发送了~");
         return false;
       }
-      this.$http.post('/app/user/sendVerificationCode', { mobile: this.mobile }, { header: { "content-type": "application/x-www-form-urlencoded" } }).then(function (res) {
+      this.$http.post('/app/user/sendVerificationCode', { mobile: this.mobile }).then(function (res) {
 
       }).catch(function (err) {
 

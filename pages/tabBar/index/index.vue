@@ -3,85 +3,89 @@
 		<view class="status_bar">
 		    <!-- 这里是状态栏 -->
 		</view>
-        <view>
-            <view class="page-section swiper">
-                <view class="page-section-spacing">
-                    <swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
-                        <swiper-item>
-                            <view class="swiper-item uni-bg-red" style="height:100%">A</view>
-                        </swiper-item>
-                        <swiper-item>
-                            <view class="swiper-item uni-bg-green" style="height:100%">B</view>
-                        </swiper-item>
-                        <swiper-item>
-                            <view class="swiper-item uni-bg-blue" style="height:100%">C</view>
-                        </swiper-item>
-                    </swiper>
-                </view>
-            </view>
-        </view>
-		<view class="uni-padding-wrap">
-			<view class="main-calculate">
-				<view class="main-calculate-top">
-					<view class="gr" style="background-color: #CCCCFF;">
-						<text>工程机械</text>
-					</view>
-					<view class="wallet" style="background-color: #EFE0DE;">
-						<text>钱包</text>
-					</view>
-				</view>
-				<view class="main-calculate-bottom">
-					<view class="gr" style="background-color: #aaCCFF;">
-						<text>合同</text>
-					</view>
-					<view class="wallet" style="background-color: #F7B969;">
-						<text>发票</text>
-					</view>
-					<view class="wallet" style="background-color: #FCB99D;">
-						<text>客服</text>
+		<template v-if="hasLogin">
+			<view>
+				<view class="page-section swiper">
+					<view class="page-section-spacing">
+						<swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
+							<swiper-item>
+								<view class="swiper-item uni-bg-red" style="height:100%">A</view>
+							</swiper-item>
+							<swiper-item>
+								<view class="swiper-item uni-bg-green" style="height:100%">B</view>
+							</swiper-item>
+							<swiper-item>
+								<view class="swiper-item uni-bg-blue" style="height:100%">C</view>
+							</swiper-item>
+						</swiper>
 					</view>
 				</view>
 			</view>
-			<view class="gr-calculate">
-				<view class="title">
-					<text>待签</text>
-					<i class='icon-coin' style="background-image: url(../../../static/images/index/sign.png);"></i>
+			<view class="uni-padding-wrap">
+				<view class="main-calculate">
+					<view class="main-calculate-top">
+						<view class="gr" style="background-color: #CCCCFF;">
+							<text>工程机械</text>
+						</view>
+						<view class="wallet" style="background-color: #EFE0DE;">
+							<text>钱包</text>
+						</view>
+					</view>
+					<view class="main-calculate-bottom">
+						<view class="gr" style="background-color: #aaCCFF;">
+							<text>合同</text>
+						</view>
+						<view class="wallet" style="background-color: #F7B969;">
+							<text>发票</text>
+						</view>
+						<view class="wallet" style="background-color: #FCB99D;">
+							<text>客服</text>
+						</view>
+					</view>
 				</view>
-				<uni-list class="contract-list">
-					<template v-for="(item,i) in contract">
-					<navigator url="/pages/projectSign/projectSign?id=1">
-						<uni-list-item class="contract-item" title="" note="" :key='i'>
-							<text style="max-width: 300rpx;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">{{item.contractTitle}}合同{{item.month}}月份</text>
-							<text>状态{{item.status}}</text>
-						</uni-list-item>
-					</navigator>
-					
-					</template>
-					
-				</uni-list>
-			</view>
-			
-			<view class="gr-calculate">
-				<view class="title">
-					<text>待收</text>
-					<i class='icon-coin' style="background-image: url(../../../static/images/index/coin.png);"></i>
+				<view class="gr-calculate">
+					<view class="title">
+						<text>待签</text>
+						<i class='icon-coin' style="background-image: url(../../../static/images/index/sign.png);"></i>
+					</view>
+					<uni-list class="contract-list">
+						<template v-for="(item,i) in contract">
+						<navigator url="/pages/projectSign/projectSign?id=1">
+							<uni-list-item class="contract-item" title="" note="" :key='i'>
+								<text style="max-width: 300rpx;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">{{item.contractTitle}}合同{{item.month}}月份</text>
+								<text>状态{{item.status}}</text>
+							</uni-list-item>
+						</navigator>
+						
+						</template>
+						
+					</uni-list>
 				</view>
-				<uni-list class="contract-list">
-					<template v-for="(item,i) in contract">
-					<navigator url="/pages/projectFunds/projectFunds?id=1">
-						<uni-list-item class="contract-item" title="" note="" :key='i'>
-							<text style="max-width: 300rpx;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">{{item.contractTitle}}合同{{item.month}}月份</text>
-							<text>状态{{item.status}}</text>
-						</uni-list-item>
-					</navigator>
-					
-					</template>
-					
-				</uni-list>
+				
+				<view class="gr-calculate">
+					<view class="title">
+						<text>待收</text>
+						<i class='icon-coin' style="background-image: url(../../../static/images/index/coin.png);"></i>
+					</view>
+					<uni-list class="contract-list">
+						<template v-for="(item,i) in contract">
+						<navigator url="/pages/projectFunds/projectFunds?id=1">
+							<uni-list-item class="contract-item" title="" note="" :key='i'>
+								<text style="max-width: 300rpx;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">{{item.contractTitle}}合同{{item.month}}月份</text>
+								<text>状态{{item.status}}</text>
+							</uni-list-item>
+						</navigator>
+						
+						</template>
+						
+					</uni-list>
+				</view>
 			</view>
-		</view>
-		
-    </view>
+		</template>
+		<template v-else>
+			<button type="default" @tap="gotoLogin" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;margin: auto;width: 300rpx;height: 60rpx;font-size: 12px;">去登陆</button>
+		</template>
+	</view>
 </template>
 <script>
 	export default {
@@ -123,9 +127,19 @@
     },
 	onShow() {
 		console.log(uni.getStorageSync('userInfo'))
-		console.log(uni.getStorageSync('token'))
+		console.log(uni.getStorageSync('token'),this.hasLogin)
+	},
+	computed: {
+		hasLogin() {
+			return this.$store.getters.getHasLogin
+		}
 	},
     methods: {
+		gotoLogin(){
+			uni.navigateTo({
+				url:'/pages/ucenter/login'
+			})
+		},
         changeIndicatorDots(e) {
             this.indicatorDots = !this.indicatorDots
         },

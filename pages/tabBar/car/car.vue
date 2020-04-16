@@ -3,29 +3,35 @@
 		<view class="status_bar">
 		    <!-- 这里是状态栏 -->
 		</view>
-		<view class="products-wrap uni-padding-wrap">
-			<template v-for="(item,i) in 16">
-				
-					<ProductItem :datas='item' :key='i'></ProductItem>
-				
-			</template>
-		</view>
-		<view class="checkout-wrap">
-			<view class="check-all">
-				<checkbox-group>
-				    <label>
-				       <evan-checkbox primaryColor='red' v-model="checked">全选</evan-checkbox>
-				    </label>
-				</checkbox-group>
+		<template v-if="hasLogin">
+			<view class="products-wrap uni-padding-wrap">
+				<template v-for="(item,i) in 16">
+					
+						<ProductItem :datas='item' :key='i'></ProductItem>
+					
+				</template>
 			</view>
-			<view class="much">
-				<text style="font-size: 14px;margin-right:16rpx;">合计: </text>
-				<text style="font-size: 14px;color:red"> 255.00</text>
+			<view class="checkout-wrap">
+				<view class="check-all">
+					<checkbox-group>
+					    <label>
+					       <evan-checkbox primaryColor='red' v-model="checked">全选</evan-checkbox>
+					    </label>
+					</checkbox-group>
+				</view>
+				<view class="much">
+					<text style="font-size: 14px;margin-right:16rpx;">合计: </text>
+					<text style="font-size: 14px;color:red"> 255.00</text>
+				</view>
+				<view class="go-check">
+					<text style="font-size: 14px;font-weight: 600;">去结算</text>
+				</view>
 			</view>
-			<view class="go-check">
-				<text style="font-size: 14px;font-weight: 600;">去结算</text>
-			</view>
-		</view>
+		</template>
+		<template v-else>
+			<button type="default" @tap="gotoLogin" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;margin: auto;width: 300rpx;height: 60rpx;font-size: 12px;">去登陆</button>
+		</template>
+		
 	</view>
 </template>
 
@@ -39,8 +45,17 @@
 				
 	        }
 	    },
+		computed:{
+			hasLogin(){
+				return this.$store.getters.getHasLogin
+			}
+		},
 	    methods: {
-			
+			gotoLogin(){
+				uni.navigateTo({
+					url:'/pages/ucenter/login'
+				})
+			}
 	    }
 	}
 </script>

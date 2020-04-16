@@ -8,11 +8,7 @@
 			
 		},
 		onShow: function() {
-			if(this.hasLogin){
-				uni.switchTab({
-					url:'/pages/tabBar/my/my'
-				})
-			}
+			
 		},
 		onHide: function() {
 			console.log('App Hide')
