@@ -1,3 +1,4 @@
+import Vue from 'vue'
 export default {
 	state:{
 		hasLogin: uni.getStorageSync('hasLogin') ? JSON.parse(uni.getStorageSync('hasLogin')) : false,

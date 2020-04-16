@@ -259,8 +259,20 @@ var _default =
 
   },
   onShow: function onShow() {
-    console.log(uni.getStorageSync('userInfo'));
-    console.log(uni.getStorageSync('token'), this.hasLogin);
+    if (this.hasLogin) {
+      this.$store.dispatch('ACgetUserInfo').then(function (res) {
+        if (res.data.status == 200) {
+
+        } else {
+
+        }
+      }).catch(function (err) {
+        uni.clearStorageSync();
+        uni.navigateTo({
+          url: '/pages/ucenter/login' });
+
+      });
+    }
   },
   computed: {
     hasLogin: function hasLogin() {
