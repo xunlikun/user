@@ -4,16 +4,23 @@
 			<text @tap="close" class='close' style="float: right; color: red;">取消</text>
 		</view>
 		<view class="product-list uni-padding-wrap">
-			<text>颜色分类:</text>
-			<uni-list class='' style='display: block;margin-top: 16rpx;'>
-				<uni-list-item title="" note=""><text>红色/土豪红</text></uni-list-item>
-				<uni-list-item title="" note=""><text>金色色/土豪金</text></uni-list-item>
-			</uni-list>
-			<view class="checkout-wrap">
-				<view class="addCar">
-					<text style="font-size: 14px;">加入购物车</text>
+			<view class="wrap-list">
+				<text>颜色分类:</text>
+				<uni-list class='' style='display: block;margin-top: 16rpx;'>
+					<uni-list-item title="" note="" v-for="(item,i) in currentData" :class="{inventory:item.inventory>0 ? true : false,chose:item.chose}" @tap='chose(item)'><text>{{item.color}}/{{item.productSize}}</text></uni-list-item>
+				</uni-list>
+			</view>
+			<view class="wrap-list">
+				<text>购买数量:</text>
+				<view class="num" style="padding: 0 0 0 0;float:right">
+					<uni-number-box :min="0" :max="999" :value="count" @change='countChange'></uni-number-box>
 				</view>
-				<view class="checkout">
+			</view>
+			<view class="checkout-wrap">
+				<view class="addCar" @tap="addCar">
+					<text style="font-size: 14px;">{{addMsg}}</text>
+				</view>
+				<view class="checkout" @tap="checkout">
 					<text style="font-size: 14px;">立即购买</text>
 				</view>
 			</view>
@@ -22,24 +29,110 @@
 </template>
 
 <script>
+	import uniNumberBox from "@dcloudio/uni-ui/lib/uni-number-box/uni-number-box.vue"
 	export default {
-		props:['type','changeCloseStatus'],
+		components:{uniNumberBox},
+		props:['type','changeCloseStatus','datas','opPopup'],
 		data() {
 			return {
+				addMsg:'加入购物车',
+				userChose:[],
+				currentData:[],
+				count:0
 			}
 		},
-		onLoad() {
-
+		mounted() {
+			this.currentData = JSON.parse(JSON.stringify(this.datas))
+		},
+		computed: {
+			hasLogin() {
+				return this.$store.getters.getHasLogin 
+			}
 		},
 		methods: {
+			countChange(value){
+				this.count = value
+			},
 			close(){
 				this.$emit('changeCloseStatus',false)
+			},
+			chose(item){
+				for (let j of this.currentData) {
+					j.chose = false
+				}
+				for (let s of this.currentData) {
+					if(item.id == s.id){
+						console.log('ok')
+						s.chose ? s.chose = false : s.chose = true;
+						let temp = JSON.parse(JSON.stringify(this.currentData))
+						this.currentData = []
+						this.currentData = temp
+					}
+				}
+					
+			},
+			addCar(){
+				if(this.hasLogin){
+					this.addMsg = '正在加入'
+					let params = {}
+					
+					for (let s of this.currentData) {
+						if(s.chose){
+							params.variantId = s.id
+							params.count = this.count
+						}
+					}
+					if(!params.variantId || !params.count){
+						uni.showToast({
+							icon:'none',
+							title:'还未选择商品',
+							duration:1000
+						})
+						this.addMsg = '加入购物车'
+						return
+					}
+					this.$http.post('/app/cart/addToCart', params ).then(res => {
+							this.count = 0
+							for (let s of this.currentData) {
+								if(s.chose){
+									s.chose = false
+								}
+							}
+							this.addMsg = '加入购物车'
+							this.close()
+							this.$emit('opPopup',res.data.msg)
+					}).catch(err => {
+						this.count = 0
+						for (let s of this.currentData) {
+							if(s.chose){
+								s.chose = false
+							}
+						}
+						this.addMsg = '加入购物车'
+						this.close()
+						this.$emit('opPopup',res.data.data.msg)
+					})
+				}else{
+					this.gotoLogin()
+				}
+			},
+			checkout(){
+				if(this.hasLogin){
+					console.log('checkout')
+				}else{
+					this.gotoLogin()
+				}
+			},
+			gotoLogin(){
+				uni.navigateTo({
+					url:'/pages/ucenter/login'
+				})
 			}
 		}
 	}
 </script>
 
-<style>
+<style scoped>
 	.checkout-wrap{
 		height: 100rpx;
 		width:100%;
@@ -66,23 +159,35 @@
 		background: orange;
 	}
 	.choses{
-		position: fixed;
-		left: 0;
-		bottom: 0;
 		border-top: 1px solid #eee;
-		width: 100%;
-		height: 600rpx;
+		height: 60vh;
 		background: #fff;
-		z-index: 10;
 	}
 	.product-list uni-list-item{
 		border: 1px solid #ccc;
 		border-radius: 6rpx;height: 50rpx;
 		display: inline-block;
-		padding: 0 8rpx;
-		margin-right: 16rpx;
+		padding: 0 16rpx;
+		margin-right: 32rpx;
+	}
+	.inventory{
+		border-color: #000000 !important;
+	}
+	.inventory > text {
+		color: #000000 !important;
+	}
+	.chose {
+		border-color: orange !important;
+		background-color: orange;
+	}
+	.chose > text {
+		color: #fff !important;
 	}
 	.product-list uni-list-item text{
 		color: #aaa;
+	}
+	.wrap-list{
+		border-bottom: 1px solid #eee;
+		padding: 30rpx 0;
 	}
 </style>

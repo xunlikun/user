@@ -1,4 +1,15 @@
 
+.popupAddress button{
+	width: 50%;
+	background-color: #fff;
+	border-radius: 0;
+	font-size: 13px;
+	outline: 0;
+}
+.popupAddress text{
+	font-size: 13px;
+	color: #666;
+}
 .products-wrap{
 	padding-bottom:120rpx;
 }

@@ -18,12 +18,12 @@
 					<view class="codeimg" @tap="getsmscode">{{smsbtn.text}}</view>
 				</view>
 				<view class=" registerbtn has-radius has-mgtb-20" style="padding-bottom: 26px ;">
-					<button @tap="defaultHandlerNext">下一步</button>
+					<button :loading="loading" @tap="defaultHandlerNext">下一步</button>
 				</view>
 			</view>
 		</view>
 		<uni-popup ref="popup" type="center">
-				<text style="background-color: #fff;padding: 40rpx 100rpx;border-radius: 8rpx;">验证码出错</text>
+				<text style="background-color: #fff;padding: 40rpx 100rpx;border-radius: 8rpx;">{{msg}}</text>
 		</uni-popup>
 	</view>
 </template>
@@ -34,6 +34,8 @@
 		components:{uniPopup},
 		data() {
 			return {
+				msg:'',
+				loading:false,
 				smsbtn: {
 					text: '获取验证码',
 					status: false,
@@ -50,7 +52,9 @@
 		},
 		methods: {
 			defaultHandlerNext: function() {
+				this.loading = true
 				this.$http.post('/app/user/checkVerificationCode', {mobile: this.mobile, verificationCode: this.auth,} ).then(res => {
+					this.loading = false
 					if(res.data.status == 200){
 						uni.navigateTo({
 						    url: '/pages/ucenter/registerDetail'
@@ -58,13 +62,19 @@
 						this.$store.commit('setRegisterMobile',this.mobile)
 						this.$store.commit('setRegisterPassword',this.password)
 					}else{
+						this.msg = res.data.msg
 						this.$refs.popup.open()
 					}
 				}).catch(err => {
-					
+					this.loading = false
 				})
 			},
 			getsmscode: function() {
+				if(!this.mobile){
+					this.msg = '请输入手机号'
+					this.$refs.popup.open()
+					return
+				}
 				if (this.smsbtn.status == true ) {
 					console.log('message：', "别着急！短信已经发送了~");
 					return false;

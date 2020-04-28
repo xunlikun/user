@@ -3,6 +3,7 @@
   "navigationStyle": "custom",
   "titleNView": "false",
   "usingComponents": {
-    "product-item": "/components/products/productItem"
+    "product-item": "/components/products/productItem",
+    "loading": "/components/xuan-loading/xuan-loading"
   }
 }

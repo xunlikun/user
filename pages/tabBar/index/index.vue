@@ -43,24 +43,6 @@
 						</view>
 					</view>
 				</view>
-				<view class="gr-calculate">
-					<view class="title">
-						<text>待签</text>
-						<i class='icon-coin' style="background-image: url(../../../static/images/index/sign.png);"></i>
-					</view>
-					<uni-list class="contract-list">
-						<template v-for="(item,i) in contract">
-						<navigator url="/pages/projectSign/projectSign?id=1">
-							<uni-list-item class="contract-item" title="" note="" :key='i'>
-								<text style="max-width: 300rpx;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">{{item.contractTitle}}合同{{item.month}}月份</text>
-								<text>状态{{item.status}}</text>
-							</uni-list-item>
-						</navigator>
-						
-						</template>
-						
-					</uni-list>
-				</view>
 				
 				<view class="gr-calculate">
 					<view class="title">
@@ -85,12 +67,18 @@
 		<template v-else>
 			<button type="default" @tap="gotoLogin" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;margin: auto;width: 300rpx;height: 60rpx;font-size: 12px;">去登陆</button>
 		</template>
+		<uni-popup ref="popup" type="center">
+				<text style="background-color: #fff;padding: 40rpx 100rpx;border-radius: 8rpx;">{{msg}}</text>
+		</uni-popup>
 	</view>
 </template>
 <script>
-	export default {
+import uniPopup from "@dcloudio/uni-ui/lib/uni-popup/uni-popup.vue"
+export default {
+	components:{uniPopup},
     data() {
         return {
+			msg:'',
             background: ['color1', 'color2', 'color3'],
             indicatorDots: true,
             autoplay: true,
@@ -134,10 +122,16 @@
 					
 				}
 			}).catch(err => {
-				uni.clearStorageSync();
-				uni.navigateTo({
-					url:'/pages/ucenter/login'
-				})
+				let that = this
+				setTimeout(() => {
+					uni.clearStorageSync();
+					uni.navigateTo({
+						url:'/pages/ucenter/login'
+					})
+					that.$refs.popup.close()
+				},2000)
+				this.msg = '获取用户信息失败，请重新登录'
+				this.$refs.popup.open()
 			})
 		}
 	},

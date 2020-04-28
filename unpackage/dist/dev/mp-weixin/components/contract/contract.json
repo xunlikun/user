@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
-  "component": true
+  "component": true,
+  "usingComponents": {
+    "evan-checkbox": "/components/evan-checkbox/evan-checkbox"
+  }
 }

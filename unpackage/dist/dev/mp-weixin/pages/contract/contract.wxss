@@ -1,4 +1,32 @@
 
+.signUI{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	height: 120rpx;
+	background-color: #fff;
+	width: 100%;
+}
+button {
+	margin-top: 16rpx;
+	height: 88rpx;
+	width: 250px;
+	line-height: 88rpx;
+	color: #ffffff;
+	font-size: 32rpx;
+	border-radius: 44rpx;
+	outline: 0;
+	display: block;
+	font-family: inherit;
+	background: #f35;
+	opacity: 0.8;
+}
+button.confirmSign{
+	margin-top: 140rpx;
+}
+button:after {
+	border: 2rpx solid #f2f2f2;
+}
 .content {
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -37,5 +65,40 @@
 .advertising_wrap{
 	height: 300rpx;
 	background: red;
+}
+.is-input1 {
+	height: 88rpx;
+	width: 100%;
+	line-height: 88rpx;
+	padding: 12rpx;
+	color: #353535;
+	font-size: 32rpx;
+	box-sizing: border-box;
+	-webkit-appearance: none;
+	        appearance: none;
+	border: 2rpx solid #e5e5e5;
+	box-shadow: none;
+	border-radius: 44rpx;
+	outline: 0;
+	display: block;
+	padding-left: 30rpx;
+	margin: 0;
+	font-family: inherit;
+	background: #fff;
+	resize: none;
+}
+.codeimg {
+	position: absolute;
+	font-size: 28rpx;
+	right: 16%;
+	z-index: 10;
+	width: 200rpx;
+	text-align: center;
+	color: #353535;
+	margin-top: -12%;
+	border-top-right-radius: 44rpx;
+	border-bottom-right-radius: 44rpx;
+	height: 80rpx;
+	line-height: 80rpx;
 }
 

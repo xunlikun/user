@@ -1,5 +1,5 @@
 
-.checkout-wrap{
+.checkout-wrap.data-v-608043d7{
 	height: 100rpx;
 	width:100%;
 	background: #fff;
@@ -20,7 +20,7 @@
 	        align-items: center;
 	z-index: 10;
 }
-.checkout,.addCar{
+.checkout.data-v-608043d7,.addCar.data-v-608043d7{
 	-webkit-box-flex: 1;
 	-webkit-flex-grow: 1;
 	        flex-grow: 1;
@@ -28,30 +28,42 @@
 	line-height: 100rpx;
 	color: #fff;
 }
-.checkout{
+.checkout.data-v-608043d7{
 	background: red;
 }
-.addCar{
+.addCar.data-v-608043d7{
 	background: orange;
 }
-.choses{
-	position: fixed;
-	left: 0;
-	bottom: 0;
+.choses.data-v-608043d7{
 	border-top: 1px solid #eee;
-	width: 100%;
-	height: 600rpx;
+	height: 60vh;
 	background: #fff;
-	z-index: 10;
 }
-.product-list uni-list-item{
+.product-list uni-list-item.data-v-608043d7{
 	border: 1px solid #ccc;
 	border-radius: 6rpx;height: 50rpx;
 	display: inline-block;
-	padding: 0 8rpx;
-	margin-right: 16rpx;
+	padding: 0 16rpx;
+	margin-right: 32rpx;
 }
-.product-list uni-list-item text{
+.inventory.data-v-608043d7{
+	border-color: #000000 !important;
+}
+.inventory > text.data-v-608043d7 {
+	color: #000000 !important;
+}
+.chose.data-v-608043d7 {
+	border-color: orange !important;
+	background-color: orange;
+}
+.chose > text.data-v-608043d7 {
+	color: #fff !important;
+}
+.product-list uni-list-item text.data-v-608043d7{
 	color: #aaa;
+}
+.wrap-list.data-v-608043d7{
+	border-bottom: 1px solid #eee;
+	padding: 30rpx 0;
 }
 

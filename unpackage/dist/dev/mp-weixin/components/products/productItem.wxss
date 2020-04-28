@@ -16,6 +16,11 @@
 view{
 	line-height: normal;
 }
+.title{
+	max-height: 80rpx;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
 .title, .price{
 	padding: 4rpx 16rpx;
 }

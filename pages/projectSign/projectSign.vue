@@ -3,6 +3,7 @@
 		<view class="advertising_wrap">
 			
 		</view>
+		<web-view src="https://sourcinboxweb.oss-cn-shanghai.aliyuncs.com/signedTest/personal/701206799352594432.pdf"></web-view>
 		<view class="uni-padding-wrap">
 			<view class="funds_wrap">
 				<view class='close_fonds' @click="back">

@@ -2,63 +2,111 @@
 	<view class="container">
 		<view class="address-list">
 			<view class="a-address" v-for="(item,index) in addressList" :key="index">
-				<view class="left-text" :class="item.isDefault? 'active':''" @tap="selectTap(item.id)">
+				<view class="left-text" :class="item.activate? 'active':''" @touchstart="toucS(item)" @touchmove="toucM(item)" @touchend="toucE(item)">
 					<view class="name-tel">
-						{{item.linkMan}} {{item.mobile}}
+						{{item.firstName}}{{item.lastName}} {{item.telephone}}
 					</view>
 					<view class="address-box">
-						{{item.address}}
+						{{item.province}} {{item.city}} {{item.address.slice(0,10)}}...
 					</view>
 				</view>
 				<view class="right-edit" @tap="editAddess(item.id)"></view>
 			</view>
 		</view>
 		<view class="bottom-box">
-			<view class="add-btn" @tap="addAddess">新增收货地址</view>
+			<view class="add-btn" style="line-height: 100rpx;" @tap="addAddess">新增收货地址</view>
 		</view>
-
+		<uni-popup ref="popup" type="center">
+				<text @tap='deleteItem' style="background-color: #fff;padding: 40rpx 100rpx;border-radius: 8rpx;color: red;">删除</text>
+		</uni-popup>
+		<Loading
+		ref="loading"
+		:custom="false"
+		:shadeClick="true"
+		:type="2"
+		@callback="callback()">
+		
+		</Loading>
 	</view>
 </template>
 
 <script>
+	import uniPopup from "@dcloudio/uni-ui/lib/uni-popup/uni-popup.vue"
+	import Loading from '@/components/xuan-loading/xuan-loading.vue'
 	export default {
+		components:{uniPopup,Loading},
 		data() {
 			return {
-				addressList: [{
-						id: 1,
-						linkMan: '小明',
-						mobile: '10086',
-						address: '北京市西城区动物园'
-					},
-					{
-						id: 2,
-						linkMan: '小红',
-						mobile: '10010',
-						address: '北京市海淀区植物园',
-						isDefault:true
-					},
-					{
-						id: 3,
-						linkMan: '小刚',
-						mobile: '10001',
-						address: '广东省广州长隆动物园'
-					
-					}
-				]
+				addressList: [],
+				currentDeleteItem: null
 			}
 		},
-		onLoad() {
-			
+		onShow() {
+			this.getAddess()
 		},
 		methods: {
 			selectTap(id) {
 				console.log("tap item id:" + JSON.stringify(id));
 			},
+			deleteItem(){
+				console.log(this.currentDeleteItem)
+				if(this.currentDeleteItem){
+					this.$http.post('/app/userAddress/removeAddress?id='+this.currentDeleteItem.id,{},{ header:{"content-type":'x-www-form-urlencoded'}}).then(res => {
+						this.getAddess()
+						this.$refs.popup.close()
+					}).catch(err => {
+						this.$refs.popup.close()
+					})
+				}
+				
+			},
+			toucS(item){
+				let that = this;
+				   clearTimeout(this.timeOutEvent);//清除定时器
+				   this.timeOutEvent = 0;
+				   this.timeOutEvent = setTimeout(function(){
+				        //执行长按要执行的内容，
+						console.log('长按！')
+						that.timeOutEvent = 0;
+						that.$refs.popup.open()
+						that.currentDeleteItem = item
+				     },600);//这里设置定时
+			},
+			toucE(item){
+				clearTimeout(this.timeOutEvent);
+				      if(this.timeOutEvent != 0){
+						  console.log('单机！')
+						  this.$refs.loading.open()
+						  this.$http.post('/app/userAddress/setActivate?id='+item.id,{},{ header:{"content-type":'x-www-form-urlencoded'}}).then(res => {
+								this.getAddess()
+								this.$refs.loading.close()
+						  }).catch(err => {
+							  this.$refs.loading.close()
+						  })
+				        //这里写要执行的内容（尤如onclick事件）
+				     }
+			},
+			toucM(){
+				console.log('移动后悔！')
+				clearTimeout(this.timeOutEvent);//清除定时器
+				     this.timeOutEvent = 0;
+			},
 			editAddess(id) {
-				console.log("edit item id:" + id);
+				uni.navigateTo({
+					url:'/pages/updataAddress/updataAddress?id=' + id
+				})
 			},
 			addAddess() {
-				console.log("tap add new Address");
+				uni.navigateTo({
+					url: '/pages/addAddress/addAddress'
+				});
+			},
+			getAddess(){
+				this.$http.post('/app/userAddress/list').then(res => {
+					this.addressList = res.data.data
+				}).catch(err => {
+					
+				})
 			}
 		}
 	}

@@ -91,14 +91,19 @@
 				</view>
 			</view>
 		</view>
+		<uni-popup ref="popup" type="center">
+				<text style="background-color: #fff;padding: 40rpx 100rpx;border-radius: 8rpx;">{{msg}}</text>
+		</uni-popup>
 	</view>
 </template>
 
 <script>
-	export default {
+import uniPopup from "@dcloudio/uni-ui/lib/uni-popup/uni-popup.vue"
+export default {
+	components:{uniPopup},
     data() {
         return {
-            
+            msg:''
         }
     },
 	onShow() {
@@ -110,10 +115,16 @@
 					
 				}
 			}).catch(err => {
-				uni.clearStorageSync();
-				uni.navigateTo({
-					url:'/pages/ucenter/login'
-				})
+				let that = this
+				setTimeout(() => {
+					uni.clearStorageSync();
+					uni.navigateTo({
+						url:'/pages/ucenter/login'
+					})
+					that.$refs.popup.close()
+				},2000)
+				this.msg = '获取用户信息失败，请重新登录'
+				this.$refs.popup.open()
 			})
 		}
 		

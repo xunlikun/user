@@ -1,5 +1,5 @@
 
-.checkout-wrap{
+.checkout-wrap.data-v-9435d962{
 	height: 100rpx;
 	width:100%;
 	background: #fff;
@@ -20,7 +20,7 @@
 	        align-items: center;
 	z-index: 10;
 }
-.checkout,.addCar{
+.checkout.data-v-9435d962,.addCar.data-v-9435d962{
 	-webkit-box-flex: 1;
 	-webkit-flex-grow: 1;
 	        flex-grow: 1;
@@ -28,13 +28,13 @@
 	line-height: 100rpx;
 	color: #fff;
 }
-.checkout{
+.checkout.data-v-9435d962{
 	background: red;
 }
-.addCar{
+.addCar.data-v-9435d962{
 	background: orange;
 }
-.chose{
+.chose.data-v-9435d962{
 	margin-top: 32rpx;
 }
 

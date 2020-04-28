@@ -1,1 +1,0 @@
-<block wx:if="{{getMaskStatus}}"><view class="mask"></view></block>

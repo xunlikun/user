@@ -4,6 +4,8 @@
   "titleNView": "false",
   "usingComponents": {
     "evan-checkbox": "/components/evan-checkbox/evan-checkbox",
-    "product-item": "/components/car/productItem"
+    "product-item": "/components/car/productItem",
+    "loading": "/components/xuan-loading/xuan-loading",
+    "uni-popup": "/node-modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup"
   }
 }

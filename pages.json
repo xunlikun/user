@@ -8,6 +8,24 @@
 		// 		"titleNView":"false"
 		// 	}
 		// },
+		// {
+		// 	"path": "pages/addAddress/addAddress",
+		// 	"style": {
+		// 		"navigationBarTitleText": "新增地址"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/checkOutPlantForm/checkOutPlantForm",
+		// 	"style": {
+		// 		"navigationBarTitleText": "确认订单"
+		// 	}
+		// },
+		// {
+		// 	"path": "pages/orders/orders",
+		// 	"style": {
+		// 		"navigationBarTitleText": "订单"
+		// 	}
+		// },
 		{
 			"path": "pages/tabBar/index/index",
 			"style": {
@@ -30,6 +48,9 @@
 		},
 		{
 			"path": "pages/tabBar/products/products",
+			"globalStyle":{
+				"onReachBottomDistance":1550
+			},
 			"style": {
 				"navigationBarTitleText": "商品",
 				"navigationStyle":"custom",
@@ -62,6 +83,24 @@
 			"path": "pages/address/address",
 			"style": {
 				"navigationBarTitleText": "收货地址"
+			}
+		},
+		{
+			"path": "pages/addAddress/addAddress",
+			"style": {
+				"navigationBarTitleText": "新增地址"
+			}
+		},
+		{
+			"path": "pages/updataAddress/updataAddress",
+			"style": {
+				"navigationBarTitleText": "修改地址"
+			}
+		},
+		{
+			"path": "pages/checkOutPlantForm/checkOutPlantForm",
+			"style": {
+				"navigationBarTitleText": "确认订单"
 			}
 		},
 		{

@@ -14,7 +14,7 @@
 					<input v-model="data.idNumber" type="number" placeholder="请输入身份证号" class="is-input1 " />
 				</view>
 				<view class=" registerbtn has-radius has-mgtb-20" style="padding-bottom: 26px ;">
-					<button @tap="defaultHandlerRegister">注册</button>
+					<button :loading='loading' @tap="defaultHandlerRegister">注册</button>
 				</view>
 			</view>
 		</view>
@@ -23,14 +23,21 @@
 				<text>注册即表示同意</text><text class="is-blue">《用户协议》</text>
 			</navigator>
 		</view>
+		<uni-popup ref="popup" type="center">
+				<text style="background-color: #fff;padding: 40rpx 100rpx;border-radius: 8rpx;">{{msg}}</text>
+		</uni-popup>
 	</view>
 </template>
 
 <script>
+	import uniPopup from "@dcloudio/uni-ui/lib/uni-popup/uni-popup.vue"
 	export default {
+		components:{uniPopup},
 		data() {
 			return {
 				data:{
+					"msg":'',
+					"loading":false,
 				    "idNumber":"",
 				    "mobile":"",
 					"password":"",
@@ -43,19 +50,22 @@
 		},
 		methods: {
 			defaultHandlerRegister: function() {
+				this.loading = true
 				this.data.mobile = this.$store.getters.getRegisterMobil
 				this.data.password = this.$store.getters.getRegisterPassword
 				this.data.UserEntityDTO.UserEntityAttrDTO = []
 				this.$http.post('/app/user/registerByMobile', this.data ).then(res => {
+					this.loading = false
 					if(res.data.status == 200){
 						uni.navigateTo({
 							url: '/pages/ucenter/login'
 						});
 					}else{
-						
+						this.msg = res.data.msg
+						this.$refs.popup.open()
 					}
 				}).catch(err => {
-					
+					this.loading = false
 				})
 			}
 

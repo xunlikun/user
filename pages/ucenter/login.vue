@@ -28,7 +28,7 @@
 			</navigator>
 		</view>
 		<uni-popup ref="popup" type="center">
-				<text style="background-color: #fff;padding: 40rpx 100rpx;border-radius: 8rpx;">账号或密码错误</text>
+				<text style="background-color: #fff;padding: 40rpx 100rpx;border-radius: 8rpx;">{{msg}}</text>
 		</uni-popup>
 	</view>
 </template>
@@ -43,6 +43,7 @@
 					loginName:"18557531926",
 					password:"wqeqeqe"
 				},
+				msg:'',
 				loading: false,
 			};
 		},
@@ -62,6 +63,7 @@
 						})
 					}else{
 						this.loading = false;
+						this.msg = res.data.msg
 						this.$refs.popup.open()
 					}
 					

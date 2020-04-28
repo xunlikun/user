@@ -2,6 +2,7 @@
   "navigationBarTitleText": "商品详情",
   "usingComponents": {
     "chose": "/components/chose/chose",
-    "masks": "/components/masks/masks"
+    "loading": "/components/xuan-loading/xuan-loading",
+    "uni-popup": "/node-modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup"
   }
 }

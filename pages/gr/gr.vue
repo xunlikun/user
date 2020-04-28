@@ -10,7 +10,7 @@
 	export default {
 		data() {
 			return {
-				title: '机械'
+				title: '敬请期待'
 			}
 		},
 		onLoad() {

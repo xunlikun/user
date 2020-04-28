@@ -1,14 +1,14 @@
 <template>
 	<view class='productItem'>
-		<navigator url="/pages/productDetail/productDetail?id=1">
+		<navigator :url="'/pages/productDetail/productDetail?id=' + datas.id">
 			<view class='img'>
-				<image :src="currentData.image" mode="aspectFit"></image>
+				<image :src="datas.mainImage" mode="aspectFit"></image>
 			</view>
 			<view class="title">
-				<text>{{currentData.title}}</text>
+				<text style="font-size: 13px;color: #666;">{{datas.title}}</text>
 			</view>
 			<view class="price">
-				<text>{{currentData.symbol}} {{currentData.price}}</text>
+				<text style="color: red;font-size: 14px;">{{currentData.symbol}} {{datas.price}}</text>
 			</view>
 		</navigator>
 		
@@ -21,7 +21,7 @@
 		data() {
 			return {
 				currentData:{
-					"title":"aswdafa",
+					"title":"aswdafaccccccccccccxxxxxxxxxxxxxxxaswvfgaegzewgaezrgaer",
 					"price":"20.00",
 					"symbol":"¥",
 					"image":"https://fond-oss1.oss-us-east-1.aliyuncs.com/product/senbo/Conmoto/L18DR0384/1.jpg?x-oss-process=image/resize,w_300/format,webp/"
@@ -54,6 +54,11 @@
 	}
 	view{
 		line-height: normal;
+	}
+	.title{
+		max-height: 80rpx;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 	.title, .price{
 		padding: 4rpx 16rpx;
