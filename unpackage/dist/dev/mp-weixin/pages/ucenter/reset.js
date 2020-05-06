@@ -131,40 +131,49 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uniPopup = function uniPopup() {__webpack_require__.e(/*! require.ensure | node-modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup */ "node-modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup").then((function () {return resolve(__webpack_require__(/*! @dcloudio/uni-ui/lib/uni-popup/uni-popup.vue */ 198));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
+  components: { uniPopup: uniPopup },
   data: function data() {
     return {
       login: {
         loading: false,
         phone: "",
-        password: "" } };
+        password: "" },
 
+      password: '',
+      mobile: '',
+      msg: '',
+      token: '' };
 
-
+  },
+  onLoad: function onLoad(op) {
+    this.mobile = op.mobile;
+    this.token = op.token;
   },
   methods: {
     defaultHandlerLogin: function defaultHandlerLogin() {var _this = this;
@@ -177,7 +186,23 @@ var _default =
     BindInput: function BindInput(e) {
       var dataval = e.currentTarget.dataset.val;
       this.login[dataval] = e.detail.value;
+    },
+    submite: function submite() {var _this2 = this;
+      this.login.loading = true;
+      this.$http.post('/app/user/resetUserInfo', { mobile: this.mobile, password: this.password }, { headers: { 'authorization': this.token } }).then(function (res) {
+        _this2.msg = res.data.msg;
+        _this2.$refs.popup.open();
+        _this2.login.loading = false;
+        if (res.data.status == 200) {
+          uni.navigateTo({
+            url: '/pages/ucenter/login' });
+
+        }
+      }).catch(function (err) {
+
+      });
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

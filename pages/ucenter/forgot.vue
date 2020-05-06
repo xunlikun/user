@@ -8,27 +8,33 @@
 		<view class="content">
 			<view class="has-mglr-10 ">
 				<view class=" has-mgtb-10 " style="padding-bottom: 26px ;">
-					<input type="number" maxlength="11" v-model="login.phone" placeholder="请输入手机号" class="is-input1 " @input="BindInput" data-val="phone" />
+					<input v-model="mobile" type="number" maxlength="11" placeholder="请输入手机号" class="is-input1 " />
 				</view>
 				<view class=" has-mgtb-10 " style="padding-bottom: 26px ;">
-					<input type="number" maxlength="6" placeholder="短信验证码" class="is-input1 " />
+					<input v-model="auth" type="number" maxlength="6" placeholder="短信验证码" class="is-input1 " />
 					<view class="codeimg" @tap="getsmscode">{{smsbtn.text}}</view>
 				</view>
 
 				<view class=" loginbtn has-radius has-mgtb-20" style="padding-bottom: 26px ;">
-					<navigator url="/pages/ucenter/reset" class=" has-radius is-center is-grey " hover-class="">
+					<navigator class=" has-radius is-center is-grey " hover-class="">
 						<button :loading="login.loading" @tap="defaultHandlerLogin"> {{ login.loading ? "校验中...":"下一步"}} </button>
 					</navigator>
 				</view>
 			</view>
 		</view>
+		<uni-popup ref="popup" type="center">
+				<text style="background-color: #fff;padding: 40rpx 100rpx;border-radius: 8rpx;">{{msg}}</text>
+		</uni-popup>
 	</view>
 </template>
 
 <script>
+	import uniPopup from "@dcloudio/uni-ui/lib/uni-popup/uni-popup.vue"
 	export default {
+		components:{uniPopup},
 		data() {
 			return {
+				msg:'',
 				login: {
 					loading: false,
 					phone:"",
@@ -39,26 +45,51 @@
 					status: false,
 					codeTime: 60
 				},
+				mobile:'',
+				auth:'',
 				timerId: null,
 			};
 		},
 		methods:{
 			defaultHandlerLogin:function(){
 				this.login.loading = true;
-				setTimeout((e=>{
+				this.$http.post('/app/user/checkVerificationCode', {mobile: this.mobile, verificationCode: this.auth,type:'resetPassWord'} ).then(res => {
+					this.loading = false
+					if(res.data.status == 200){
+						uni.navigateTo({
+						    url: '/pages/ucenter/reset?mobile=' + this.mobile + '&token=' + res.data.data
+						});
+						this.login.loading = false;
+					}else{
+						this.msg = res.data.msg
+						this.$refs.popup.open()
+						this.login.loading = false;
+					}
+				}).catch(err => {
 					this.login.loading = false;
-				}),1500);
-				console.log(JSON.stringify(this.login)); 
+				})
 			},
 			BindInput:function(e){
 				var dataval = e.currentTarget.dataset.val;
 				this.login[dataval] = e.detail.value; 
 			},
 			getsmscode: function() {
+				if(!this.mobile){
+					this.msg = '请输入手机号'
+					this.$refs.popup.open()
+					return
+				}
 				if (this.smsbtn.status == true ) {
 					console.log('message：', "别着急！短信已经发送了~");
 					return false;
 				}
+				
+				this.$http.post('/app/user/sendVerificationCode', {mobile: this.mobile,type:'resetPassWord'} ).then(res => {
+				
+				}).catch(err => {
+				
+				})
+				
 				this.smsbtn.status = true; // 这段代码其实应该加在你request请求 短信发送成功后 
 				this.timerId = setInterval(() => {
 						var codeTime = this.smsbtn.codeTime;
@@ -140,7 +171,7 @@
 		position: absolute;
 		font-size: 28rpx;
 		right: 12%;
-		z-index: 999;
+		z-index: 10;
 		width: 200rpx;
 		text-align: center;
 		color: #353535;

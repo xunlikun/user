@@ -8,21 +8,23 @@
 		<view class="content">
 			<view class="has-mglr-10 ">
 				<view class=" has-radius has-mgtb-10" style="padding-bottom: 26px ;">
-					<input v-model="login.password" placeholder="输入新密码" class="is-input1"  @input="BindInput" data-val="password"/>
-				</view>
-				<view class=" has-radius has-mgtb-10" style="padding-bottom: 26px ;">
-					<input v-model="login.password" placeholder="再次输入新密码" class="is-input1"  @input="BindInput" data-val="password"/>
+					<input v-model="password" placeholder="输入新密码" class="is-input1"  @input="BindInput" data-val="password"/>
 				</view>
 				<view class=" registerbtn has-radius has-mgtb-20" style="padding-bottom: 26px ;">
-					<button>确定</button>
+					<button @tap="submite">确定</button>
 				</view>
 			</view>
 		</view>
+		<uni-popup ref="popup" type="center">
+				<text style="background-color: #fff;padding: 40rpx 100rpx;border-radius: 8rpx;">{{msg}}</text>
+		</uni-popup>
 	</view>
 </template>
 
 <script>
+	import uniPopup from "@dcloudio/uni-ui/lib/uni-popup/uni-popup.vue"
 	export default {
+		components:{uniPopup},
 		data() {
 			return {
 				login: {
@@ -30,8 +32,15 @@
 					phone:"",
 					password:""
 				},
-
+				password:'',
+				mobile:'',
+				msg:'',
+				token:''
 			};
+		},
+		onLoad(op) {
+			this.mobile = op.mobile
+			this.token = op.token
 		},
 		methods:{
 			defaultHandlerLogin:function(){
@@ -44,6 +53,21 @@
 			BindInput:function(e){
 				var dataval = e.currentTarget.dataset.val;
 				this.login[dataval] = e.detail.value; 
+			},
+			submite(){
+				this.login.loading = true;
+				this.$http.post('/app/user/resetUserInfo', {mobile: this.mobile, password:this.password},{headers:{'authorization':this.token}} ).then(res => {
+					this.msg = res.data.msg
+					this.$refs.popup.open()
+					this.login.loading = false;
+					if(res.data.status == 200){
+						uni.navigateTo({
+							url:'/pages/ucenter/login'
+						})
+					}
+				}).catch(err => {
+					
+				})
 			}
 		}
 	}

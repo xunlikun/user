@@ -51,10 +51,10 @@
 					</view>
 					<uni-list class="contract-list">
 						<template v-for="(item,i) in contract">
-						<navigator url="/pages/projectFunds/projectFunds?id=1">
+						<navigator :url="'/pages/projectFunds/projectFunds?contractId=' + item.contractId + '&month=' + item.month">
 							<uni-list-item class="contract-item" title="" note="" :key='i'>
-								<text style="max-width: 300rpx;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">{{item.contractTitle}}合同{{item.month}}月份</text>
-								<text>状态{{item.status}}</text>
+								<text style="max-width:300rpx;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">合同: {{item.contractTitle}},</text>
+								<text>{{item.month}} 月份</text>
 							</uni-list-item>
 						</navigator>
 						
@@ -84,33 +84,7 @@ export default {
             autoplay: true,
             interval: 5000,
             duration: 500,
-			contract:[
-				{
-					contractTitle:'森帛合同森帛合同森帛合同森帛合同森帛合同森帛合同森帛合同森帛合同森帛合同',
-					month:'3',
-					status:'施工方核算'
-				},
-				{
-					contractTitle:'森帛',
-					month:'12',
-					status:'我方方核算'
-				},
-				{
-					contractTitle:'森帛',
-					month:'12',
-					status:'我方方核算'
-				},
-				{
-					contractTitle:'森帛',
-					month:'12',
-					status:'我方方核算'
-				},
-				{
-					contractTitle:'森帛',
-					month:'12',
-					status:'我方方核算'
-				}
-			]
+			contract:[]
         }
     },
 	onShow() {
@@ -134,6 +108,7 @@ export default {
 				this.$refs.popup.open()
 			})
 		}
+		this.getDueIn()
 	},
 	computed: {
 		hasLogin() {
@@ -157,7 +132,14 @@ export default {
         },
         durationChange(e) {
             this.duration = e.target.value
-        }
+        },
+		getDueIn(){
+			this.$http.post('/app/invoice/confirmList').then(res => {
+				this.contract = res.data.data
+			}).catch(err => {
+				
+			})
+		}
     }
 }
 </script>

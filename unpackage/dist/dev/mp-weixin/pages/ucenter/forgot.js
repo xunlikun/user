@@ -131,37 +131,43 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uniPopup = function uniPopup() {__webpack_require__.e(/*! require.ensure | node-modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup */ "node-modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup").then((function () {return resolve(__webpack_require__(/*! @dcloudio/uni-ui/lib/uni-popup/uni-popup.vue */ 198));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
+  components: { uniPopup: uniPopup },
   data: function data() {
     return {
+      msg: '',
       login: {
         loading: false,
         phone: "",
@@ -172,26 +178,51 @@ var _default =
         status: false,
         codeTime: 60 },
 
+      mobile: '',
+      auth: '',
       timerId: null };
 
   },
   methods: {
     defaultHandlerLogin: function defaultHandlerLogin() {var _this = this;
       this.login.loading = true;
-      setTimeout(function (e) {
+      this.$http.post('/app/user/checkVerificationCode', { mobile: this.mobile, verificationCode: this.auth, type: 'resetPassWord' }).then(function (res) {
+        _this.loading = false;
+        if (res.data.status == 200) {
+          uni.navigateTo({
+            url: '/pages/ucenter/reset?mobile=' + _this.mobile + '&token=' + res.data.data });
+
+          _this.login.loading = false;
+        } else {
+          _this.msg = res.data.msg;
+          _this.$refs.popup.open();
+          _this.login.loading = false;
+        }
+      }).catch(function (err) {
         _this.login.loading = false;
-      }, 1500);
-      console.log(JSON.stringify(this.login));
+      });
     },
     BindInput: function BindInput(e) {
       var dataval = e.currentTarget.dataset.val;
       this.login[dataval] = e.detail.value;
     },
     getsmscode: function getsmscode() {var _this2 = this;
+      if (!this.mobile) {
+        this.msg = '请输入手机号';
+        this.$refs.popup.open();
+        return;
+      }
       if (this.smsbtn.status == true) {
         console.log('message：', "别着急！短信已经发送了~");
         return false;
       }
+
+      this.$http.post('/app/user/sendVerificationCode', { mobile: this.mobile, type: 'resetPassWord' }).then(function (res) {
+
+      }).catch(function (err) {
+
+      });
+
       this.smsbtn.status = true; // 这段代码其实应该加在你request请求 短信发送成功后 
       this.timerId = setInterval(function () {
         var codeTime = _this2.smsbtn.codeTime;
@@ -208,6 +239,7 @@ var _default =
       1000);
       return false;
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

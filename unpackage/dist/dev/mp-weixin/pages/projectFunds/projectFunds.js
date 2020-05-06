@@ -165,15 +165,51 @@ var _default =
 {
   data: function data() {
     return {
-      loading: false };
+      loading: false,
+      mount: '0.00',
+      month: '',
+      contract: {} };
 
   },
-  onLoad: function onLoad() {
-
+  onLoad: function onLoad(op) {
+    this.month = op.month;
+    this.getDueInInfo(op);
+    this.getContractInfo(op);
   },
   methods: {
     back: function back() {
       uni.navigateBack();
+    },
+    getDueInInfo: function getDueInInfo(op) {var _this = this;
+      this.$http.post('/app/invoice/getContractAmount?contractId=' + op.contractId + '&month=' + op.month, {}, { headers: { "content-type": "x-www-form-urlencoded" } }).then(function (res) {
+        _this.mount = res.data.data.toFixed(2);
+      }).catch(function (err) {
+
+      });
+    },
+    getContractInfo: function getContractInfo(op) {var _this2 = this;
+      this.$http.post('/app/contract/getContractDetail?id=' + op.contractId, {}, { headers: { "content-type": "x-www-form-urlencoded" } }).then(function (res) {
+        _this2.contract = res.data.data;
+      }).catch(function (err) {
+
+      });
+    },
+    getMount: function getMount() {var _this3 = this;
+      this.loading = true;
+      this.$http.post('/app/invoice/confirmAmount?contractId=' + this.contract.id, {}, { headers: { "content-type": "x-www-form-urlencoded" } }).then(function (res) {
+        uni.showToast({
+          icon: 'none',
+          title: res.data.msg,
+          duration: 1000 });
+
+        if (res.data.status == 200) {
+          _this3.back();
+        }
+        _this3.loading = false;
+      }).catch(function (err) {
+
+      });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

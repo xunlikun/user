@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "忘记密码",
-  "usingComponents": {}
+  "usingComponents": {
+    "uni-popup": "/node-modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup"
+  }
 }

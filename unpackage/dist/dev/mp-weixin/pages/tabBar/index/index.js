@@ -217,33 +217,7 @@ __webpack_require__.r(__webpack_exports__);
       autoplay: true,
       interval: 5000,
       duration: 500,
-      contract: [
-      {
-        contractTitle: '森帛合同森帛合同森帛合同森帛合同森帛合同森帛合同森帛合同森帛合同森帛合同',
-        month: '3',
-        status: '施工方核算' },
-
-      {
-        contractTitle: '森帛',
-        month: '12',
-        status: '我方方核算' },
-
-      {
-        contractTitle: '森帛',
-        month: '12',
-        status: '我方方核算' },
-
-      {
-        contractTitle: '森帛',
-        month: '12',
-        status: '我方方核算' },
-
-      {
-        contractTitle: '森帛',
-        month: '12',
-        status: '我方方核算' }] };
-
-
+      contract: [] };
 
   },
   onShow: function onShow() {var _this = this;
@@ -267,6 +241,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.$refs.popup.open();
       });
     }
+    this.getDueIn();
   },
   computed: {
     hasLogin: function hasLogin() {
@@ -290,6 +265,13 @@ __webpack_require__.r(__webpack_exports__);
     },
     durationChange: function durationChange(e) {
       this.duration = e.target.value;
+    },
+    getDueIn: function getDueIn() {var _this2 = this;
+      this.$http.post('/app/invoice/confirmList').then(function (res) {
+        _this2.contract = res.data.data;
+      }).catch(function (err) {
+
+      });
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
